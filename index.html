@@ -4,79 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0}[hidden]{display:none!important}</style>
 <title>مشجّر آل العبدالله</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
 <style>
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0}
-[hidden]{display:none!important}
-
-/* Layout: an indented nasab tree, right to left; every person is a node and every child branches from its parent */
+/* Layout: top-down generations. Each generation is a band of siblings; only the chosen line stays open, a stem drops from the open name to its children */
 :root{
-  --bg:#F3F5F1; --surface:#FFFFFF; --fg:#18231C; --muted:#5C6B61; --line:#B3BFB6;
+  --bg:#F3F5F1; --surface:#FFFFFF; --band:#EAEEE8; --fg:#18231C; --muted:#5C6B61; --line:#A9B6AC;
   --known:#2E6A4D; --known-bg:#E3EFE7;
   --oral:#8E5F25; --oral-bg:#F5EADB;
   --presumed:#4F5F8A; --presumed-bg:#E6E9F3;
-  --missing:#7A857D; --missing-bg:#ECEFEC;
+  --missing:#6F7A72; --missing-bg:#ECEFEC;
+  --on-accent:#FFFFFF;
   --display:"Amiri","Noto Naskh Arabic","Times New Roman",serif;
   --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#111713; --surface:#18201B; --fg:#E4EAE5; --muted:#9AA79E; --line:#3E4B42;
+  --bg:#111713; --surface:#18201B; --band:#151C17; --fg:#E4EAE5; --muted:#9AA79E; --line:#43514A;
   --known:#79C29C; --known-bg:#1E2F25; --oral:#DDAA6A; --oral-bg:#33281A;
-  --presumed:#9DAEE0; --presumed-bg:#232A3D; --missing:#8D998F; --missing-bg:#202722; color-scheme:dark}}
+  --presumed:#9DAEE0; --presumed-bg:#232A3D; --missing:#8D998F; --missing-bg:#202722;
+  --on-accent:#0E1A13; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#111713; --surface:#18201B; --fg:#E4EAE5; --muted:#9AA79E; --line:#3E4B42;
+  --bg:#111713; --surface:#18201B; --band:#151C17; --fg:#E4EAE5; --muted:#9AA79E; --line:#43514A;
   --known:#79C29C; --known-bg:#1E2F25; --oral:#DDAA6A; --oral-bg:#33281A;
-  --presumed:#9DAEE0; --presumed-bg:#232A3D; --missing:#8D998F; --missing-bg:#202722; color-scheme:dark}
+  --presumed:#9DAEE0; --presumed-bg:#232A3D; --missing:#8D998F; --missing-bg:#202722;
+  --on-accent:#0E1A13; color-scheme:dark}
 
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.7}
-.wrap{max-width:760px;margin:0 auto;padding-block:28px 48px;
+.wrap{max-width:820px;margin:0 auto;padding-block:28px 48px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
-  display:flex;flex-direction:column;gap:24px}
+  display:flex;flex-direction:column;gap:22px}
 header{display:flex;flex-direction:column;gap:4px;text-align:center}
 h1{font-family:var(--display);font-weight:700;font-size:2.1rem;line-height:1.3;margin:0;text-wrap:balance}
 .sub{color:var(--muted);margin:0}
-.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-.chip{font-size:.8rem;padding:2px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
-.chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
-.c-known{background:var(--known-bg);color:var(--known)} .c-known i{background:var(--known)}
-.c-oral{background:var(--oral-bg);color:var(--oral)} .c-oral i{background:var(--oral)}
-.c-presumed{background:var(--presumed-bg);color:var(--presumed)} .c-presumed i{background:var(--presumed)}
-.c-missing{background:var(--missing-bg);color:var(--missing)} .c-missing i{background:var(--missing)}
-
-.tree-box{overflow-x:auto;padding-bottom:4px}
-ul.tree, ul.tree ul{list-style:none;margin:0;padding:0}
-ul.tree ul{padding-inline-start:20px}
-ul.tree li{position:relative;padding-block:4px}
-ul.tree ul > li::before{content:"";position:absolute;inset-inline-start:-14px;top:0;height:23px;width:12px;
-  border-inline-start:2px solid var(--line);border-bottom:2px solid var(--line);border-end-start-radius:7px}
-ul.tree ul > li::after{content:"";position:absolute;inset-inline-start:-14px;top:23px;bottom:0;border-inline-start:2px solid var(--line)}
-ul.tree ul > li:last-child::after{display:none}
-ul.tree li.dashed::before, ul.tree li.dashed::after{border-style:dashed}
-
-details > summary{list-style:none;cursor:pointer;display:inline-block}
-details > summary::-webkit-details-marker{display:none}
-summary:focus-visible .node{outline:2px solid var(--known);outline-offset:2px}
-
-.node{display:inline-flex;flex-direction:column;align-items:flex-start;gap:0;background:var(--surface);
-  border:1.5px solid var(--line);border-radius:9px;padding:3px 10px 4px;max-width:100%;min-width:0;vertical-align:top}
-.node .row{display:flex;align-items:baseline;gap:8px}
-.node .name{font-family:var(--display);font-size:1.15rem;font-weight:700;line-height:1.45}
-.node .count{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.node .count::before{content:"▾ ";font-size:.65rem}
-details:not([open]) > summary .count::before{content:"◂ "}
-.node .note{font-size:.76rem;color:var(--muted);line-height:1.5;max-width:44ch}
-.node .pending{font-size:.72rem;color:var(--missing);border:1px dashed var(--missing);border-radius:6px;padding:0 6px;margin-top:2px}
-.node.known{border-color:var(--known)}
-.node.oral{border-color:var(--oral);background:var(--oral-bg)}
-.node.oral .name{color:var(--oral)}
-.node.presumed{border-color:var(--presumed);border-style:dashed}
-.node.missing{border-style:dashed;border-color:var(--missing);background:var(--missing-bg)}
-.node.missing .name{font-family:var(--body);font-size:.85rem;font-weight:500;color:var(--missing)}
 
 .notice{display:flex;flex-direction:column;gap:2px;text-align:center;background:var(--oral-bg);color:var(--fg);border:1px solid var(--oral);border-radius:10px;padding:10px 14px;max-width:60ch;margin:0 auto}
 .notice strong{font-family:var(--display);font-size:1.15rem;color:var(--oral)}
@@ -84,15 +46,65 @@ details:not([open]) > summary .count::before{content:"◂ "}
 .phone{font-size:1.15rem;font-weight:600;letter-spacing:.06em;font-variant-numeric:tabular-nums;user-select:all;-webkit-user-select:all}
 .copy{font:inherit;font-size:.8rem;background:var(--surface);color:var(--oral);border:1px solid var(--oral);border-radius:999px;padding:2px 12px;cursor:pointer}
 .copy:focus-visible{outline:2px solid var(--oral);outline-offset:2px}
-.foot{text-align:center;color:var(--muted);font-size:.8rem}
-@media (max-width:420px){
-  ul.tree ul{padding-inline-start:16px}
-  ul.tree ul > li::before, ul.tree ul > li::after{inset-inline-start:-11px}
-  ul.tree ul > li::before{width:9px}
-  h1{font-size:1.75rem}
-}
 
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.chip{font-size:.8rem;padding:2px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+.chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.c-known{background:var(--known-bg);color:var(--known)} .c-known i{background:var(--known)}
+.c-oral{background:var(--oral-bg);color:var(--oral)} .c-oral i{background:var(--oral)}
+.c-presumed{background:var(--presumed-bg);color:var(--presumed)} .c-presumed i{background:var(--presumed)}
+.c-missing{background:var(--missing-bg);color:var(--missing)} .c-missing i{background:var(--missing)}
+.hint{text-align:center;color:var(--muted);font-size:.85rem;margin:0}
+
+/* the chart */
+.chart{position:relative;display:flex;flex-direction:column;align-items:stretch}
+.band{display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--band);border:1px solid var(--line);border-radius:14px;padding:10px 8px 12px}
+.band.top{background:none;border:0;padding:0}
+.band-label{font-size:.75rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:100%}
+.stem{position:relative;height:26px}
+.stem::before{content:"";position:absolute;top:0;bottom:0;left:var(--x,50%);border-left:2px solid var(--line);transform:translateX(-1px)}
+.stem.uncertain::before{border-left-style:dashed}
+.stem::after{content:"";position:absolute;bottom:-4px;left:var(--x,50%);width:8px;height:8px;border-radius:50%;background:var(--line);transform:translateX(-4px)}
+
+.node{font:inherit;color:inherit;text-align:start;display:inline-flex;flex-direction:column;align-items:flex-start;
+  background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:4px 11px 5px;max-width:100%;min-width:0}
+button.node{cursor:pointer}
+button.node:hover{border-color:var(--fg)}
+button.node:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.node .top-line{display:flex;align-items:baseline;gap:8px}
+.node .name{font-family:var(--display);font-size:1.15rem;font-weight:700;line-height:1.45}
+.node .count{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.node .note{font-size:.74rem;color:var(--muted);line-height:1.5;max-width:30ch}
+.node .pending{font-size:.7rem;color:var(--missing);border:1px dashed var(--missing);border-radius:6px;padding:0 6px;margin-top:2px}
+.node.known{border-color:var(--known)}
+.node.oral{border-color:var(--oral);background:var(--oral-bg)}
+.node.oral .name{color:var(--oral)}
+.node.presumed{border-color:var(--presumed);border-style:dashed}
+.node.missing{border-style:dashed;border-color:var(--missing);background:var(--missing-bg)}
+.node.missing .name{font-family:var(--body);font-size:.85rem;font-weight:500;color:var(--missing)}
+
+.node.is-open{border-style:solid;color:var(--on-accent)}
+.node.is-open.known{background:var(--known);border-color:var(--known)}
+.node.is-open.oral{background:var(--oral);border-color:var(--oral)}
+.node.is-open.presumed{background:var(--presumed);border-color:var(--presumed)}
+.node.is-open.missing{background:var(--missing);border-color:var(--missing)}
+.node.is-open .name, .node.is-open .count, .node.is-open .note{color:var(--on-accent)}
+.node.is-open .note, .node.is-open .count{opacity:.88}
+
+@keyframes rise{from{opacity:.3;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.band.fresh{animation:rise .22s ease-out}
+@media (prefers-reduced-motion: reduce){.band.fresh{animation:none}}
+
+.foot{text-align:center;color:var(--muted);font-size:.8rem;margin:0}
+@media (max-width:420px){
+  h1{font-size:1.75rem}
+  .node{padding:3px 9px 4px}
+  .node .name{font-size:1.05rem}
+  .row{gap:6px}
+}
 </style>
+
 </head>
 <body>
 <main class="wrap" dir="rtl" lang="ar">
@@ -106,7 +118,7 @@ details:not([open]) > summary .count::before{content:"◂ "}
     <span>يتم تحديثها والإضافة عليها باستمرار. إذا عندك أسماء ناقصة أو تصحيح أو وثائق قديمة، تواصل مع جعفر بن موسى العبدالله.</span>
     <span class="phone-row">
       <span class="phone" id="phone" dir="ltr">0501486144</span>
-      <button type="button" class="copy" id="copy-phone" hidden>نسخ الرقم</button>
+      <button type="button" class="copy" id="copy-phone">نسخ الرقم</button>
     </span>
   </aside>
 
@@ -117,23 +129,235 @@ details:not([open]) > summary .count::before{content:"◂ "}
     <span class="chip c-missing"><i></i>بانتظار الأسماء</span>
   </div>
 
-  <div class="tree-box"><ul class="tree"><li><details open><summary><span class="node oral"><span class="row"><span class="name">عبيد (العبيد)</span><span class="count">١</span></span><span class="note">الجد الأول حسب رواية العائلة. قدم من الرياض، وتزوج من المنيزلة وسكنها</span></span></summary><ul><li class="dashed"><details open><summary><span class="node missing"><span class="row"><span class="name">أجيال لم تُعرف بعد</span><span class="count">١</span></span><span class="note">هل بين عبيد وعبدالله أجيال؟</span></span></summary><ul><li class="dashed"><details open><summary><span class="node presumed"><span class="row"><span class="name">عبدالله</span><span class="count">٣</span></span><span class="note">الجد الجامع للفروع الثلاثة، ومنه اسم العبدالله</span></span></summary><ul><li class="dashed"><details open><summary><span class="node presumed"><span class="row"><span class="name">مبارك</span><span class="count">١</span></span><span class="note">فرع المبارك · الترتيب بينه وبين حسين غير مؤكد</span></span></summary><ul><li class="dashed"><details open><summary><span class="node presumed"><span class="row"><span class="name">حسين</span><span class="count">١</span></span><span class="note">الترتيب بينه وبين مبارك غير مؤكد</span></span></summary><ul><li class="dashed"><details open><summary><span class="node known"><span class="row"><span class="name">صالح</span><span class="count">٢</span></span></span></summary><ul><li><details open><summary><span class="node known"><span class="row"><span class="name">جواد</span><span class="count">٨</span></span></span></summary><ul><li><details open><summary><span class="node known"><span class="row"><span class="name">محمد</span><span class="count">٨</span></span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">عبدالهادي</span></span></span></li><li><span class="node known"><span class="row"><span class="name">علي</span></span></span></li><li><span class="node known"><span class="row"><span class="name">زهرة</span></span></span></li><li><span class="node known"><span class="row"><span class="name">مصطفى</span></span></span></li><li><span class="node known"><span class="row"><span class="name">حسن</span></span></span></li><li><span class="node known"><span class="row"><span class="name">جواد</span></span></span></li><li><span class="node known"><span class="row"><span class="name">فضة</span></span></span></li><li><span class="node known"><span class="row"><span class="name">زينب</span></span></span></li></ul></details></li><li><details open><summary><span class="node known"><span class="row"><span class="name">لطيفة</span><span class="count">١٠</span></span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">فاطمة</span></span></span></li><li><span class="node known"><span class="row"><span class="name">عيسى</span></span></span></li><li><span class="node known"><span class="row"><span class="name">أحمد</span></span></span></li><li><span class="node known"><span class="row"><span class="name">ليلى</span></span></span></li><li><span class="node known"><span class="row"><span class="name">فاضل</span></span></span></li><li><span class="node known"><span class="row"><span class="name">مريم</span></span></span></li><li><span class="node known"><span class="row"><span class="name">مرتضى</span></span></span></li><li><span class="node known"><span class="row"><span class="name">زهرة</span></span></span></li><li><span class="node known"><span class="row"><span class="name">عفاف</span></span></span></li><li><span class="node known"><span class="row"><span class="name">علي</span></span></span></li></ul></details></li><li><details open><summary><span class="node known"><span class="row"><span class="name">آسيا</span><span class="count">٧</span></span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">فخري</span></span></span></li><li><span class="node known"><span class="row"><span class="name">حيدر</span></span></span></li><li><span class="node known"><span class="row"><span class="name">فاطمة</span></span></span></li><li><span class="node known"><span class="row"><span class="name">علي</span></span></span></li><li><span class="node known"><span class="row"><span class="name">زينب</span></span></span></li><li><span class="node known"><span class="row"><span class="name">مريم</span></span></span></li><li><span class="node known"><span class="row"><span class="name">زهرة</span></span></span></li></ul></details></li><li><span class="node known"><span class="row"><span class="name">صالح</span></span><span class="note">توفي قبل أن يُنجب، رحمه الله</span></span></li><li><details open><summary><span class="node known"><span class="row"><span class="name">موسى</span><span class="count">٧</span></span><span class="note">رسمياً: موسى جواد صالح العبدالله · زوجته: شعاع بنت بتلاء بنت عبدالله بن صالح</span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">فاطمة</span></span></span></li><li><span class="node known"><span class="row"><span class="name">أحمد</span></span></span></li><li><span class="node known"><span class="row"><span class="name">جعفر</span></span></span></li><li><span class="node known"><span class="row"><span class="name">كميل</span></span></span></li><li><span class="node known"><span class="row"><span class="name">صالح</span></span></span></li><li><span class="node known"><span class="row"><span class="name">مريم</span></span></span></li><li><span class="node known"><span class="row"><span class="name">سارة</span></span></span></li></ul></details></li><li><details open><summary><span class="node known"><span class="row"><span class="name">حسين</span><span class="count">٣</span></span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">علي</span></span></span></li><li><span class="node known"><span class="row"><span class="name">محمد</span></span></span></li><li><span class="node known"><span class="row"><span class="name">فاطمة</span></span></span></li></ul></details></li><li><details open><summary><span class="node known"><span class="row"><span class="name">ياسين</span><span class="count">٢</span></span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">محمد</span></span></span></li><li><span class="node known"><span class="row"><span class="name">علي</span></span></span></li></ul></details></li><li><details open><summary><span class="node known"><span class="row"><span class="name">إبراهيم</span><span class="count">٢</span></span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">مهدي</span></span></span></li><li><span class="node known"><span class="row"><span class="name">جواد</span></span></span></li></ul></details></li></ul></details></li><li><details open><summary><span class="node known"><span class="row"><span class="name">عبدالله</span><span class="count">٤</span></span><span class="note">أخو جواد</span></span></summary><ul><li><details open><summary><span class="node known"><span class="row"><span class="name">بتلاء</span><span class="count">٢</span></span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">شعاع</span></span><span class="note">زوجة موسى بن جواد</span></span></li><li><span class="node known"><span class="row"><span class="name">عبدالمحسن</span></span></span></li></ul></details></li><li><details open><summary><span class="node known"><span class="row"><span class="name">عيسى</span><span class="count">١</span></span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">محمد</span></span></span></li></ul></details></li><li><details open><summary><span class="node known"><span class="row"><span class="name">يوسف</span><span class="count">٤</span></span></span></summary><ul><li><span class="node known"><span class="row"><span class="name">طوعة</span></span></span></li><li><span class="node known"><span class="row"><span class="name">بدرية</span></span></span></li><li><span class="node known"><span class="row"><span class="name">نعيمة</span></span></span></li><li><span class="node known"><span class="row"><span class="name">حسن</span></span></span></li></ul></details></li><li><span class="node known"><span class="row"><span class="name">خليفة</span></span><span class="note">عنده بنات</span><span class="pending">الذرية: بانتظار الأسماء</span></span></li></ul></details></li></ul></details></li></ul></details></li></ul></details></li><li class="dashed"><span class="node presumed"><span class="row"><span class="name">عبدالمحسن؟</span></span><span class="note">فرع العبدالمحسن · السلسلة لم تُجمع</span><span class="pending">الذرية: بانتظار الأسماء</span></span></li><li class="dashed"><span class="node presumed"><span class="row"><span class="name">عيسى؟</span></span><span class="note">فرع العيسى · السلسلة لم تُجمع</span><span class="pending">الذرية: بانتظار الأسماء</span></span></li></ul></details></li></ul></details></li></ul></details></li></ul></div>
+  <p class="hint">اضغط على أي اسم عنده عيال عشان تنزل لذريته، وتنطوي الفروع الثانية تلقائياً</p>
 
-  <p class="foot">آخر تحديث: ١٨ أكتوبر ٢٠٢٦ · اضغط على أي اسم عنده عيال عشان تطوي فرعه أو تفتحه</p>
+  <div class="chart" id="chart" aria-live="polite"></div>
+
+  <p class="foot" id="foot"></p>
 </main>
+
 <script>
-(function(){
-  var b = document.getElementById("copy-phone"), num = document.getElementById("phone");
-  if (!b || !num || !navigator.clipboard) return;
-  b.hidden = false;
-  b.addEventListener("click", function(){
-    navigator.clipboard.writeText(num.textContent.trim()).then(function(){
-      b.textContent = "اننسخ الرقم"; setTimeout(function(){ b.textContent = "نسخ الرقم"; }, 2000);
-    }, function(){
-      try { var r = document.createRange(); r.selectNodeContents(num); var s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
-    });
+// ===== بيانات الشجرة: كل شخص له خانة، وعياله تحته =====
+const DATA = {
+  updated: "٢١ أكتوبر ٢٠٢٦",
+  root: {
+    name: "عبيد (العبيد)", status: "oral",
+    note: "الجد الأول حسب رواية العائلة. قدم من الرياض، وتزوج من المنيزلة وسكنها",
+    children: [{
+      name: "أجيال لم تُعرف بعد", status: "missing", note: "هل بين عبيد وعبدالله أجيال؟",
+      children: [{
+        name: "عبدالله", status: "presumed", note: "الجد الجامع للفروع الثلاثة، ومنه اسم العبدالله",
+        children: [
+          { name: "مبارك", status: "presumed", note: "فرع المبارك · الترتيب بينه وبين حسين غير مؤكد",
+            children: [
+              { name: "حسين", status: "presumed", note: "الترتيب بينه وبين مبارك غير مؤكد",
+                children: [
+                  { name: "صالح", status: "known",
+                    children: [
+                      { name: "جواد", status: "known",
+                        children: [
+                          { name: "محمد", status: "known",
+                            children: [
+                              { name: "عبدالهادي", status: "known" },
+                              { name: "علي", status: "known" },
+                              { name: "زهرة", status: "known" },
+                              { name: "مصطفى", status: "known" },
+                              { name: "حسن", status: "known" },
+                              { name: "جواد", status: "known" },
+                              { name: "فضة", status: "known" },
+                              { name: "زينب", status: "known" }
+                            ]},
+                          { name: "لطيفة", status: "known",
+                            children: [
+                              { name: "فاطمة", status: "known" },
+                              { name: "عيسى", status: "known" },
+                              { name: "أحمد", status: "known" },
+                              { name: "ليلى", status: "known" },
+                              { name: "فاضل", status: "known" },
+                              { name: "مريم", status: "known" },
+                              { name: "مرتضى", status: "known" },
+                              { name: "زهرة", status: "known" },
+                              { name: "عفاف", status: "known" },
+                              { name: "علي", status: "known" }
+                            ]},
+                          { name: "آسيا", status: "known",
+                            children: [
+                              { name: "فخري", status: "known" },
+                              { name: "حيدر", status: "known" },
+                              { name: "فاطمة", status: "known" },
+                              { name: "علي", status: "known" },
+                              { name: "زينب", status: "known" },
+                              { name: "مريم", status: "known" },
+                              { name: "زهرة", status: "known" }
+                            ]},
+                          { name: "صالح", status: "known", note: "توفي قبل أن يُنجب، رحمه الله" },
+                          { name: "موسى", status: "known", note: "رسمياً: موسى جواد صالح العبدالله · زوجته: شعاع بنت بتلاء بنت عبدالله بن صالح",
+                            children: [
+                              { name: "فاطمة", status: "known" },
+                              { name: "أحمد", status: "known" },
+                              { name: "جعفر", status: "known" },
+                              { name: "كميل", status: "known" },
+                              { name: "صالح", status: "known" },
+                              { name: "مريم", status: "known" },
+                              { name: "سارة", status: "known" }
+                            ]},
+                          { name: "حسين", status: "known",
+                            children: [
+                              { name: "علي", status: "known" },
+                              { name: "محمد", status: "known" },
+                              { name: "فاطمة", status: "known" }
+                            ]},
+                          { name: "ياسين", status: "known",
+                            children: [
+                              { name: "محمد", status: "known" },
+                              { name: "علي", status: "known" }
+                            ]},
+                          { name: "إبراهيم", status: "known",
+                            children: [
+                              { name: "مهدي", status: "known" },
+                              { name: "جواد", status: "known" }
+                            ]}
+                        ]},
+                      { name: "عبدالله", status: "known", note: "أخو جواد",
+                        children: [
+                          { name: "بتلاء", status: "known",
+                            children: [
+                              { name: "شعاع", status: "known", note: "زوجة موسى بن جواد" },
+                              { name: "عبدالمحسن", status: "known" }
+                            ]},
+                          { name: "عيسى", status: "known",
+                            children: [
+                              { name: "محمد", status: "known" }
+                            ]},
+                          { name: "يوسف", status: "known",
+                            children: [
+                              { name: "طوعة", status: "known" },
+                              { name: "بدرية", status: "known" },
+                              { name: "نعيمة", status: "known" },
+                              { name: "حسن", status: "known" }
+                            ]},
+                          { name: "خليفة", status: "known", note: "عنده بنات", pending: true }
+                        ]}
+                    ]}
+                ]}
+            ]},
+          { name: "عبدالمحسن؟", status: "presumed", note: "فرع العبدالمحسن · السلسلة لم تُجمع", pending: true },
+          { name: "عيسى؟", status: "presumed", note: "فرع العيسى · السلسلة لم تُجمع", pending: true }
+        ]
+      }]
+    }]
+  }
+};
+
+// يفتح افتراضياً خط الجد من عبيد إلى جواد
+const DEFAULT_PATH = [0, 0, 0, 0, 0, 0];
+
+const AR = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+const UNSURE = s => s === "presumed" || s === "missing" || s === "oral";
+const hasKids = n => !!(n.children && n.children.length);
+const reduceMotion = (() => { try { return matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; } })();
+
+// open[i] هو الاسم المفتوح في الجيل i؛ open[0] هو الجد الأول
+let open = [DATA.root];
+DEFAULT_PATH.forEach(i => { const last = open[open.length - 1]; if (hasKids(last) && last.children[i]) open.push(last.children[i]); });
+
+const chart = document.getElementById("chart");
+
+function card(n, depth){
+  const expandable = hasKids(n);
+  const el = document.createElement(expandable ? "button" : "div");
+  if (expandable) el.type = "button";
+  el.className = "node " + n.status + (open[depth] === n ? " is-open" : "");
+  if (expandable){
+    el.setAttribute("aria-expanded", open[depth] === n ? "true" : "false");
+    el.addEventListener("click", () => toggle(n, depth));
+  }
+  const line = document.createElement("span"); line.className = "top-line";
+  const nm = document.createElement("span"); nm.className = "name"; nm.textContent = n.name; line.appendChild(nm);
+  if (expandable){
+    const c = document.createElement("span"); c.className = "count";
+    c.textContent = AR(n.children.length) + (open[depth] === n ? " ▴" : " ▾");
+    line.appendChild(c);
+  }
+  el.appendChild(line);
+  if (n.note){ const t = document.createElement("span"); t.className = "note"; t.textContent = n.note; el.appendChild(t); }
+  if (n.pending){ const p = document.createElement("span"); p.className = "pending"; p.textContent = "الذرية: بانتظار الأسماء"; el.appendChild(p); }
+  return el;
+}
+
+function bandLabel(parent){
+  if (parent.status === "missing") return "بعدهم";
+  return "عيال " + parent.name.replace(/[؟?]/g, "").replace(/\s*\(.*\)/, "") + " · " + AR(parent.children.length);
+}
+
+function render(freshDepth){
+  chart.textContent = "";
+  // الجيل الأول
+  const top = document.createElement("section"); top.className = "band top"; top.dataset.depth = "0";
+  const r0 = document.createElement("div"); r0.className = "row"; r0.appendChild(card(DATA.root, 0)); top.appendChild(r0);
+  chart.appendChild(top);
+  // كل اسم مفتوح ينزل تحته جيل عياله
+  open.forEach((parent, i) => {
+    if (!hasKids(parent)) return;
+    const stem = document.createElement("div");
+    stem.className = "stem" + (UNSURE(parent.status) ? " uncertain" : "");
+    stem.dataset.from = String(i);
+    chart.appendChild(stem);
+    const band = document.createElement("section");
+    band.className = "band" + (freshDepth === i + 1 ? " fresh" : "");
+    band.dataset.depth = String(i + 1);
+    const lab = document.createElement("div"); lab.className = "band-label"; lab.textContent = bandLabel(parent);
+    band.appendChild(lab);
+    const row = document.createElement("div"); row.className = "row";
+    parent.children.forEach(ch => row.appendChild(card(ch, i + 1)));
+    band.appendChild(row);
+    chart.appendChild(band);
   });
-})();
+  placeStems();
+  if (freshDepth != null){
+    const target = chart.querySelector('.band[data-depth="' + freshDepth + '"]');
+    if (target) try { target.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" }); } catch (e) {}
+  }
+}
+
+// يحط الخط النازل تحت الاسم المفتوح بالضبط
+function placeStems(){
+  const box = chart.getBoundingClientRect();
+  chart.querySelectorAll(".stem").forEach(stem => {
+    const band = chart.querySelector('.band[data-depth="' + stem.dataset.from + '"]');
+    const node = band && band.querySelector(".node.is-open");
+    if (!node) return;
+    const r = node.getBoundingClientRect();
+    stem.style.setProperty("--x", (r.left + r.width / 2 - box.left) + "px");
+  });
+}
+
+function toggle(n, depth){
+  if (open[depth] === n){
+    open = open.slice(0, depth);          // يطوي هالاسم وكل اللي تحته
+    render(null);
+  } else {
+    open = open.slice(0, depth).concat([n]); // يفتح هالاسم، ويطوي إخوانه وفروعهم
+    render(depth + 1);
+  }
+  const btn = Array.from(chart.querySelectorAll('.band[data-depth="' + depth + '"] button.node'))
+    .find(b => b.querySelector(".name").textContent === n.name && (open[depth] === n) === b.classList.contains("is-open"));
+  if (btn) try { btn.focus({ preventScroll: true }); } catch (e) {}
+}
+
+render(null);
+addEventListener("resize", placeStems);
+try { document.fonts.ready.then(placeStems); } catch (e) {}
+
+const copyBtn = document.getElementById("copy-phone");
+copyBtn.addEventListener("click", () => {
+  const num = document.getElementById("phone");
+  const done = () => { copyBtn.textContent = "اننسخ الرقم"; setTimeout(() => { copyBtn.textContent = "نسخ الرقم"; }, 2000); };
+  const pick = () => { try { const r = document.createRange(); r.selectNodeContents(num); const s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {} copyBtn.textContent = "الرقم محدد، انسخه من جوالك"; };
+  try { navigator.clipboard.writeText(num.textContent.trim()).then(done, pick); } catch (e) { pick(); }
+});
+document.getElementById("foot").textContent = "آخر تحديث: " + DATA.updated;
 </script>
+
 </body>
 </html>
