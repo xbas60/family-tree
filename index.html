@@ -193,11 +193,27 @@ const DATA = {
                           { name: "صالح", status: "known", note: "توفي قبل أن يُنجب، رحمه الله" },
                           { name: "موسى", status: "known", note: "رسمياً: موسى جواد صالح العبدالله · زوجته: شعاع بنت بتلاء بنت عبدالله بن صالح",
                             children: [
-                              { name: "فاطمة", status: "known" },
+                              { name: "فاطمة", status: "known",
+                                children: [
+                                  { name: "زهرة", status: "known" },
+                                  { name: "زينب", status: "known" }
+                                ]},
                               { name: "أحمد", status: "known" },
                               { name: "جعفر", status: "known" },
-                              { name: "كميل", status: "known" },
-                              { name: "صالح", status: "known" },
+                              { name: "كميل", status: "known",
+                                children: [
+                                  { name: "موسى", status: "known" },
+                                  { name: "حسن", status: "known" },
+                                  { name: "زهراء", status: "known" },
+                                  { name: "علي", status: "known" },
+                                  { name: "هاشم", status: "known" }
+                                ]},
+                              { name: "صالح", status: "known",
+                                children: [
+                                  { name: "حور", status: "known" },
+                                  { name: "زهرة", status: "known" },
+                                  { name: "علي", status: "known" }
+                                ]},
                               { name: "مريم", status: "known" },
                               { name: "سارة", status: "known" }
                             ]},
@@ -236,8 +252,30 @@ const DATA = {
                               { name: "نعيمة", status: "known" },
                               { name: "حسن", status: "known" }
                             ]},
-                          { name: "خليفة", status: "known", note: "عنده بنات", pending: true }
+                          { name: "خليفة", status: "known", note: "عنده بنات", pending: true },
+                          { name: "معصومة", status: "known",
+                            children: [
+                              { name: "غنية", status: "known" },
+                              { name: "عقيل", status: "known" },
+                              { name: "ياسر", status: "known" },
+                              { name: "أحلام", status: "known" },
+                              { name: "علي", status: "known" }
+                            ]}
                         ]}
+                    ]},
+                  { name: "علي", status: "known", note: "أخو صالح",
+                    children: [
+                      { name: "عبدالله", status: "known" },
+                      { name: "عبدالهادي", status: "known" },
+                      { name: "محمد", status: "known" }
+                    ]},
+                  { name: "مبارك", status: "known", note: "أخو صالح",
+                    children: [
+                      { name: "مريم", status: "known" },
+                      { name: "حسين", status: "known" },
+                      { name: "عبدالرسول", status: "known" },
+                      { name: "سلمان", status: "known" },
+                      { name: "صادق", status: "known" }
                     ]}
                 ]}
             ]},
