@@ -129,6 +129,8 @@ button.node:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
     <span class="chip c-missing"><i></i>بانتظار الأسماء</span>
   </div>
 
+  <p class="hint">ترتيب الأجيال مأخوذ من دفتر مشجر العائلة الذي كتبه حيدر بن عبدالرسول سنة ١٤١٢هـ نقلاً عن جدته، مع إضافات أهل العائلة</p>
+
   <p class="hint">اضغط على أي اسم عنده عيال عشان تنزل لذريته، وتنطوي الفروع الثانية تلقائياً</p>
 
   <div class="chart" id="chart" aria-live="polite"></div>
@@ -141,154 +143,330 @@ button.node:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 const DATA = {
   updated: "٢١ أكتوبر ٢٠٢٦",
   root: {
-    name: "عبيد (العبيد)", status: "oral",
-    note: "الجد الأول حسب رواية العائلة. قدم من الرياض، وتزوج من المنيزلة وسكنها",
+    name: "عبيد", status: "known", note: "الجد الأعلى، ومنه اسم العبيد",
     children: [{
-      name: "أجيال لم تُعرف بعد", status: "missing", note: "هل بين عبيد وعبدالله أجيال؟",
-      children: [{
-        name: "عبدالله", status: "presumed", note: "الجد الجامع للفروع الثلاثة، ومنه اسم العبدالله",
-        children: [
-          { name: "مبارك", status: "presumed", note: "فرع المبارك · الترتيب بينه وبين حسين غير مؤكد",
-            children: [
-              { name: "حسين", status: "presumed", note: "الترتيب بينه وبين مبارك غير مؤكد",
-                children: [
-                  { name: "صالح", status: "known",
-                    children: [
-                      { name: "جواد", status: "known",
-                        children: [
-                          { name: "محمد", status: "known",
-                            children: [
-                              { name: "عبدالهادي", status: "known" },
-                              { name: "علي", status: "known" },
-                              { name: "زهرة", status: "known" },
-                              { name: "مصطفى", status: "known" },
-                              { name: "حسن", status: "known" },
-                              { name: "جواد", status: "known" },
-                              { name: "فضة", status: "known" },
-                              { name: "زينب", status: "known" }
-                            ]},
-                          { name: "لطيفة", status: "known",
-                            children: [
-                              { name: "فاطمة", status: "known" },
-                              { name: "عيسى", status: "known" },
-                              { name: "أحمد", status: "known" },
-                              { name: "ليلى", status: "known" },
-                              { name: "فاضل", status: "known" },
-                              { name: "مريم", status: "known" },
-                              { name: "مرتضى", status: "known" },
-                              { name: "زهرة", status: "known" },
-                              { name: "عفاف", status: "known" },
-                              { name: "علي", status: "known" }
-                            ]},
-                          { name: "آسيا", status: "known",
-                            children: [
-                              { name: "فخري", status: "known" },
-                              { name: "حيدر", status: "known" },
-                              { name: "فاطمة", status: "known" },
-                              { name: "علي", status: "known" },
-                              { name: "زينب", status: "known" },
-                              { name: "مريم", status: "known" },
-                              { name: "زهرة", status: "known" }
-                            ]},
-                          { name: "صالح", status: "known", note: "توفي قبل أن يُنجب، رحمه الله" },
-                          { name: "موسى", status: "known", note: "رسمياً: موسى جواد صالح العبدالله · زوجته: شعاع بنت بتلاء بنت عبدالله بن صالح",
-                            children: [
-                              { name: "فاطمة", status: "known",
-                                children: [
-                                  { name: "زهرة", status: "known" },
-                                  { name: "زينب", status: "known" }
-                                ]},
-                              { name: "أحمد", status: "known" },
-                              { name: "جعفر", status: "known" },
-                              { name: "كميل", status: "known",
-                                children: [
-                                  { name: "موسى", status: "known" },
-                                  { name: "حسن", status: "known" },
-                                  { name: "زهراء", status: "known" },
-                                  { name: "علي", status: "known" },
-                                  { name: "هاشم", status: "known" }
-                                ]},
-                              { name: "صالح", status: "known",
-                                children: [
-                                  { name: "حور", status: "known" },
-                                  { name: "زهرة", status: "known" },
-                                  { name: "علي", status: "known" }
-                                ]},
-                              { name: "مريم", status: "known" },
-                              { name: "سارة", status: "known" }
-                            ]},
-                          { name: "حسين", status: "known",
-                            children: [
-                              { name: "علي", status: "known" },
-                              { name: "محمد", status: "known" },
-                              { name: "فاطمة", status: "known" }
-                            ]},
-                          { name: "ياسين", status: "known",
-                            children: [
-                              { name: "محمد", status: "known" },
-                              { name: "علي", status: "known" }
-                            ]},
-                          { name: "إبراهيم", status: "known",
-                            children: [
-                              { name: "مهدي", status: "known" },
-                              { name: "جواد", status: "known" }
-                            ]}
-                        ]},
-                      { name: "عبدالله", status: "known", note: "أخو جواد",
-                        children: [
-                          { name: "بتلاء", status: "known",
-                            children: [
-                              { name: "شعاع", status: "known", note: "زوجة موسى بن جواد" },
-                              { name: "عبدالمحسن", status: "known" }
-                            ]},
-                          { name: "عيسى", status: "known",
-                            children: [
-                              { name: "محمد", status: "known" }
-                            ]},
-                          { name: "يوسف", status: "known",
-                            children: [
-                              { name: "طوعة", status: "known" },
-                              { name: "بدرية", status: "known" },
-                              { name: "نعيمة", status: "known" },
-                              { name: "حسن", status: "known" }
-                            ]},
-                          { name: "خليفة", status: "known", note: "عنده بنات", pending: true },
-                          { name: "معصومة", status: "known",
-                            children: [
-                              { name: "غنية", status: "known" },
-                              { name: "عقيل", status: "known" },
-                              { name: "ياسر", status: "known" },
-                              { name: "أحلام", status: "known" },
-                              { name: "علي", status: "known" }
-                            ]}
-                        ]}
-                    ]},
-                  { name: "علي", status: "known", note: "أخو صالح",
-                    children: [
-                      { name: "عبدالله", status: "known" },
-                      { name: "عبدالهادي", status: "known" },
-                      { name: "محمد", status: "known" }
-                    ]},
-                  { name: "مبارك", status: "known", note: "أخو صالح",
-                    children: [
-                      { name: "مريم", status: "known" },
-                      { name: "حسين", status: "known" },
-                      { name: "عبدالرسول", status: "known" },
-                      { name: "سلمان", status: "known" },
-                      { name: "صادق", status: "known" }
-                    ]}
-                ]}
-            ]},
-          { name: "عبدالمحسن؟", status: "presumed", note: "فرع العبدالمحسن · السلسلة لم تُجمع", pending: true },
-          { name: "عيسى؟", status: "presumed", note: "فرع العيسى · السلسلة لم تُجمع", pending: true }
-        ]
-      }]
+      name: "مبارك", status: "known", note: "مبارك العبيد · أبو عبدالله العبيد وإخوانه",
+      children: [
+        { name: "عبدالله", status: "known", note: "عبدالله العبيد · جد العبدالله",
+          children: [
+            { name: "مبارك", status: "known", note: "فرع المبارك",
+              children: [
+                { name: "سلمان", status: "known",
+                  children: [
+                    { name: "علي", status: "known", note: "زوجته فاطمة بنت صالح بن مبارك",
+                      children: [
+                        { name: "عبدالله", status: "known" },
+                        { name: "عبدالهادي", status: "known" },
+                        { name: "محمد", status: "known" },
+                        { name: "زهراء", status: "known" },
+                        { name: "فضيلة", status: "known" }
+                      ]},
+                    { name: "مبارك", status: "known",
+                      children: [
+                        { name: "مريم", status: "known", note: "زوجها شريدة الفحل" },
+                        { name: "حسين", status: "known" },
+                        { name: "عبدالرسول", status: "known" },
+                        { name: "سلمان", status: "known" },
+                        { name: "صادق", status: "known" },
+                        { name: "زهراء", status: "known" }
+                      ]},
+                    { name: "أم هاشم", status: "known", note: "بنت سلمان" }
+                  ]},
+                { name: "صالح", status: "known", note: "زوجته لطيفة بنت حسين بن عبدالله",
+                  children: [
+                    { name: "جواد", status: "known", note: "زوجته: فضة بنت عبدالمحسن",
+                      children: [
+                        { name: "محمد", status: "known",
+                          children: [
+                            { name: "عبدالهادي", status: "known" },
+                            { name: "علي", status: "known" },
+                            { name: "زهرة", status: "known" },
+                            { name: "مصطفى", status: "known" },
+                            { name: "حسن", status: "known" },
+                            { name: "جواد", status: "known" },
+                            { name: "فضة", status: "known" },
+                            { name: "زينب", status: "known" }
+                          ]},
+                        { name: "لطيفة", status: "known",
+                          children: [
+                            { name: "فاطمة", status: "known" },
+                            { name: "عيسى", status: "known" },
+                            { name: "أحمد", status: "known" },
+                            { name: "ليلى", status: "known" },
+                            { name: "فاضل", status: "known" },
+                            { name: "مريم", status: "known" },
+                            { name: "مرتضى", status: "known" },
+                            { name: "زهرة", status: "known" },
+                            { name: "عفاف", status: "known" },
+                            { name: "علي", status: "known" }
+                          ]},
+                        { name: "آسيا", status: "known",
+                          children: [
+                            { name: "فخري", status: "known" },
+                            { name: "حيدر", status: "known" },
+                            { name: "فاطمة", status: "known" },
+                            { name: "علي", status: "known" },
+                            { name: "زينب", status: "known" },
+                            { name: "مريم", status: "known" },
+                            { name: "زهرة", status: "known" }
+                          ]},
+                        { name: "صالح", status: "known", note: "توفي قبل أن يُنجب، رحمه الله" },
+                        { name: "موسى", status: "known", note: "رسمياً: موسى جواد صالح العبدالله · زوجته: شعاع بنت عبدالله بن عبدالمحسن",
+                          children: [
+                            { name: "فاطمة", status: "known",
+                              children: [
+                                { name: "زهرة", status: "known" },
+                                { name: "زينب", status: "known" }
+                              ]},
+                            { name: "أحمد", status: "known" },
+                            { name: "جعفر", status: "known" },
+                            { name: "كميل", status: "known",
+                              children: [
+                                { name: "موسى", status: "known" },
+                                { name: "حسن", status: "known" },
+                                { name: "زهراء", status: "known" },
+                                { name: "علي", status: "known" },
+                                { name: "هاشم", status: "known" }
+                              ]},
+                            { name: "صالح", status: "known",
+                              children: [
+                                { name: "حور", status: "known" },
+                                { name: "زهرة", status: "known" },
+                                { name: "علي", status: "known" }
+                              ]},
+                            { name: "مريم", status: "known" },
+                            { name: "سارة", status: "known" }
+                          ]},
+                        { name: "حسين", status: "known",
+                          children: [
+                            { name: "علي", status: "known" },
+                            { name: "محمد", status: "known" },
+                            { name: "فاطمة", status: "known" }
+                          ]},
+                        { name: "ياسين", status: "known",
+                          children: [
+                            { name: "محمد", status: "known" },
+                            { name: "علي", status: "known" }
+                          ]},
+                        { name: "إبراهيم", status: "known",
+                          children: [
+                            { name: "مهدي", status: "known" },
+                            { name: "جواد", status: "known" }
+                          ]}
+                      ]},
+                    { name: "عبدالله", status: "known", note: "أخو جواد · زوجته مريم بنت عبدالله الحسين",
+                      children: [
+                        { name: "عبدالإله", status: "known" },
+                        { name: "بتلاء", status: "known", note: "زوجها عبدالله بن عبدالمحسن",
+                          children: [
+                            { name: "شعاع", status: "known", note: "زوجة موسى بن جواد" },
+                            { name: "عبدالمحسن", status: "known" }
+                          ]},
+                        { name: "عيسى", status: "known",
+                          children: [
+                            { name: "محمد", status: "known" }
+                          ]},
+                        { name: "يوسف", status: "known",
+                          children: [
+                            { name: "طوعة", status: "known" },
+                            { name: "بدرية", status: "known" },
+                            { name: "نعيمة", status: "known" },
+                            { name: "حسن", status: "known" }
+                          ]},
+                        { name: "خليفة", status: "known", note: "عنده بنات", pending: true },
+                        { name: "معصومة", status: "known",
+                          children: [
+                            { name: "غنية", status: "known" },
+                            { name: "عقيل", status: "known" },
+                            { name: "ياسر", status: "known" },
+                            { name: "أحلام", status: "known" },
+                            { name: "علي", status: "known" }
+                          ]}
+                      ]},
+                    { name: "فاطمة", status: "known", note: "زوجة علي بن سلمان" }
+                  ]}
+              ]},
+            { name: "علي", status: "known", pending: true,
+              children: [
+                { name: "محمد", status: "known", note: "محمد العلي" },
+                { name: "مريم", status: "known", note: "زوجة علي بن صالح العطافي" },
+                { name: "فاطمة", status: "known", note: "زوجة حسين بن عبدالمحسن" },
+                { name: "رقية", status: "known" }
+              ]},
+            { name: "عبدالمحسن", status: "known", note: "فرع العبدالمحسن",
+              children: [
+                { name: "حسين", status: "known", note: "زوجته فاطمة بنت علي بن عبدالله",
+                  children: [
+                    { name: "عبدالمحسن", status: "known", note: "أبو فضة زوجة جواد · عنده ولد واحد وتسع بنات",
+                      children: [
+                        { name: "عبدالله", status: "known", note: "زوجاته: بتلاء بنت عبدالله بن صالح، وزوجة ثانية",
+                          children: [
+                            { name: "شعاع", status: "known", note: "أمها بتلاء · زوجة موسى بن جواد" },
+                            { name: "عبدالمحسن", status: "known", note: "أمه بتلاء" },
+                            { name: "علي", status: "known" },
+                            { name: "أحمد", status: "known" },
+                            { name: "عدنان", status: "known" },
+                            { name: "يوسف", status: "known" },
+                            { name: "حسين", status: "known" },
+                            { name: "زهرة", status: "known" },
+                            { name: "عقيل", status: "known" },
+                            { name: "فاطمة", status: "known" }
+                          ]},
+                        { name: "فاطمة", status: "known", note: "زوجة علي بن صالح العطافي" },
+                        { name: "فضة", status: "known", note: "زوجة جواد بن صالح · عيالها هم عيال جواد" },
+                        { name: "حجية", status: "known", note: "زوجة كاظم البراهيم" },
+                        { name: "آمنة", status: "known", note: "زوجة محمد الحمد" },
+                        { name: "راضية", status: "known", note: "زوجة عبدالكريم بن عبدالنبي، ثم حسين يعقوب السعيد" },
+                        { name: "قبلة", status: "known", note: "زوجة علي العلي" },
+                        { name: "سكينة", status: "known", note: "زوجة حسين بن علي العبدالمحسن" },
+                        { name: "نعيمة", status: "known", note: "زوجة صالح بن علي العبدالمحسن" },
+                        { name: "معصومة", status: "known", note: "زوجة طاهر بن علي العبدالمحسن" }
+                      ]},
+                    { name: "علي", status: "known" },
+                    { name: "نورا", status: "known", note: "أم حاكم العيسى" }
+                  ]},
+                { name: "علي", status: "known", note: "المشهور بالعقيد",
+                  children: [
+                    { name: "حسين", status: "known",
+                      children: [
+                        { name: "أحمد", status: "known" },
+                        { name: "علي", status: "known" },
+                        { name: "عبدالمحسن", status: "known" },
+                        { name: "فاطمة", status: "known", note: "زوجة أحمد عبدالقادر الديلم" },
+                        { name: "فائزة", status: "known", note: "زوجة محمد الحمد" },
+                        { name: "زهراء", status: "known" },
+                        { name: "مريم", status: "known" }
+                      ]},
+                    { name: "صالح", status: "known",
+                      children: [
+                        { name: "عبدالمنعم", status: "known" },
+                        { name: "محمد", status: "known" },
+                        { name: "علي", status: "known" },
+                        { name: "حسين", status: "known" },
+                        { name: "مرتضى", status: "known" }
+                      ]},
+                    { name: "طاهر", status: "known",
+                      children: [
+                        { name: "زكي", status: "known" },
+                        { name: "عبدالله", status: "known" },
+                        { name: "أحمد", status: "known" },
+                        { name: "حسين", status: "known" },
+                        { name: "محمد", status: "known" },
+                        { name: "مريم", status: "known" }
+                      ]},
+                    { name: "إبراهيم", status: "known",
+                      children: [
+                        { name: "جعفر", status: "known" },
+                        { name: "هاني", status: "known" }
+                      ]},
+                    { name: "حجي", status: "known",
+                      children: [
+                        { name: "عارف", status: "known" },
+                        { name: "حبيب", status: "known" },
+                        { name: "أحمد", status: "known" },
+                        { name: "فاطمة", status: "known" }
+                      ]},
+                    { name: "يوسف", status: "known" },
+                    { name: "عيسى", status: "known" },
+                    { name: "فاطمة", status: "known", note: "زوجة أحمد البراهيم السعيد" },
+                    { name: "زينب", status: "known", note: "زوجة موسى محمد البراهيم" },
+                    { name: "حسنى", status: "known", note: "زوجة ناصر العطافي" },
+                    { name: "زهراء", status: "known" }
+                  ]}
+              ]},
+            { name: "حسين", status: "known", note: "جد جواد من جهة أمه لطيفة",
+              children: [
+                { name: "عبدالله", status: "known", note: "عبدالله الحسين · زوجته فاطمة بنت إبراهيم السعيد",
+                  children: [
+                    { name: "عبدالمحسن", status: "known",
+                      children: [
+                        { name: "أحمد", status: "known" },
+                        { name: "عيسى", status: "known" },
+                        { name: "علي", status: "known" },
+                        { name: "عبدالمجيد", status: "known" },
+                        { name: "فاطمة", status: "known" },
+                        { name: "صفية", status: "known" },
+                        { name: "زكية", status: "known" },
+                        { name: "ليلى", status: "known" },
+                        { name: "زهراء", status: "known" }
+                      ]},
+                    { name: "حسين", status: "known",
+                      children: [
+                        { name: "يوسف", status: "known" },
+                        { name: "علي", status: "known" },
+                        { name: "عبدالله", status: "known" },
+                        { name: "نايف", status: "known" },
+                        { name: "عارف", status: "known" },
+                        { name: "زهراء", status: "known" },
+                        { name: "صديقة", status: "known" },
+                        { name: "زينب", status: "known" },
+                        { name: "فضيلة", status: "known" },
+                        { name: "نعيمة", status: "known" }
+                      ]},
+                    { name: "محمد", status: "known", note: "بو جاسم · زوجته آمنة بنت محمد العلي",
+                      children: [
+                        { name: "جاسم", status: "known" },
+                        { name: "علي", status: "known" },
+                        { name: "عبدالله", status: "known", note: "من زوجة ثانية" },
+                        { name: "عيسى", status: "known", note: "من زوجة ثانية" },
+                        { name: "فاطمة", status: "known" },
+                        { name: "مريم", status: "known" },
+                        { name: "سارة", status: "known" },
+                        { name: "أميرة", status: "known" },
+                        { name: "ليلى", status: "known" },
+                        { name: "بدر", status: "known" }
+                      ]},
+                    { name: "زهراء", status: "known", note: "زوجة عبدالمحسن العبدالله" },
+                    { name: "مريم", status: "known", note: "زوجة عبدالله بن صالح" }
+                  ]},
+                { name: "عبدالنبي", status: "known", note: "زوجته لولوة بنت عبدالله العيسى",
+                  children: [
+                    { name: "عبدالكريم", status: "known", note: "زوجته راضية بنت عبدالمحسن",
+                      children: [
+                        { name: "عبدالله", status: "known" },
+                        { name: "لولوة", status: "known" }
+                      ]},
+                    { name: "صديقة", status: "known", note: "زوجة عبدالمحسن العبدالله" },
+                    { name: "فاطمة", status: "known", note: "زوجة حسين العبدالله" }
+                  ]},
+                { name: "سارة", status: "known", note: "زوجة صالح العطافي، أم علي وأحمد وراضي وآمنة" },
+                { name: "لطيفة", status: "known", note: "زوجة صالح بن مبارك، أم جواد وعبدالله وفاطمة" },
+                { name: "مريم", status: "known", note: "زوجة محمد بن عبدالله" }
+              ]},
+            { name: "محمد", status: "known", note: "زوجته مريم بنت حسين بن عبدالله",
+              children: [
+                { name: "محمد", status: "known", note: "المعروف بمحمد الحمد · أبو حمد",
+                  children: [
+                    { name: "حمد", status: "known" },
+                    { name: "علي", status: "known" },
+                    { name: "عبدالله", status: "known" },
+                    { name: "حسين", status: "known" }
+                  ]}
+              ]},
+            { name: "فاطمة", status: "known" },
+            { name: "سارة", status: "known" },
+            { name: "صديقة", status: "known" }
+          ]},
+        { name: "سلطان", status: "presumed", note: "فرع العيسى من ذريته · قراءة من الدفتر تحتاج تأكيد",
+          children: [
+            { name: "عيسى", status: "presumed",
+              children: [
+                { name: "عبدالله", status: "presumed", note: "عبدالله العيسى" },
+                { name: "أحمد", status: "presumed", note: "أحمد العيسى" },
+                { name: "مريم", status: "presumed" }
+              ]},
+            { name: "أحمد", status: "presumed" },
+            { name: "شهاب", status: "presumed" }
+          ]},
+        { name: "أحمد", status: "known", note: "أخو عبدالله العبيد" },
+        { name: "عفيفة", status: "known", note: "أخت عبدالله العبيد · تزوجت من الجعفر" }
+      ]
     }]
   }
 };
 
 // يفتح افتراضياً خط الجد من عبيد إلى جواد
-const DEFAULT_PATH = [0, 0, 0, 0, 0, 0];
+const DEFAULT_PATH = [0, 0, 0, 1, 0];
 
 const AR = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
 const UNSURE = s => s === "presumed" || s === "missing" || s === "oral";
@@ -324,6 +502,7 @@ function card(n, depth){
 }
 
 function bandLabel(parent){
+  if (parent.label) return parent.label;
   if (parent.status === "missing") return "بعدهم";
   return "عيال " + parent.name.replace(/[؟?]/g, "").replace(/\s*\(.*\)/, "") + " · " + AR(parent.children.length);
 }
