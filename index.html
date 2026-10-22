@@ -129,7 +129,7 @@ button.node:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
     <span class="chip c-missing"><i></i>بانتظار الأسماء</span>
   </div>
 
-  <p class="hint">ترتيب الأجيال مأخوذ من دفتر مشجر العائلة الذي كتبه حيدر بن عبدالرسول سنة ١٤١٢هـ نقلاً عن جدته، مع إضافات أهل العائلة</p>
+  <p class="hint">ترتيب الأجيال مأخوذ من دفتر بو عاطف المكتوب سنة ١٤١٢هـ، وهو تجميع من مصادر مختلفة، مع إضافات أهل العائلة</p>
 
   <p class="hint">اضغط على أي اسم عنده عيال عشان تنزل لذريته، وتنطوي الفروع الثانية تلقائياً</p>
 
@@ -151,7 +151,7 @@ const DATA = {
           children: [
             { name: "مبارك", status: "known", note: "فرع المبارك",
               children: [
-                { name: "سلمان", status: "known",
+                { name: "سلمان", status: "known", note: "زوجته مريم بنت عيسى بن سلطان",
                   children: [
                     { name: "علي", status: "known", note: "زوجته فاطمة بنت صالح بن مبارك",
                       children: [
@@ -323,7 +323,7 @@ const DATA = {
                         { name: "معصومة", status: "known", note: "زوجة طاهر بن علي العبدالمحسن" }
                       ]},
                     { name: "علي", status: "known" },
-                    { name: "نورا", status: "known", note: "أم حاكم العيسى" }
+                    { name: "نورا", status: "known", note: "زوجة محمد بن أحمد العيسى، أم حاكم العيسى" }
                   ]},
                 { name: "علي", status: "known", note: "المشهور بالعقيد",
                   children: [
@@ -452,13 +452,31 @@ const DATA = {
             { name: "عيسى", status: "presumed",
               children: [
                 { name: "عبدالله", status: "presumed", note: "عبدالله العيسى" },
-                { name: "أحمد", status: "presumed", note: "أحمد العيسى" },
-                { name: "مريم", status: "presumed" }
+                { name: "أحمد", status: "presumed", note: "أحمد العيسى",
+                  children: [
+                    { name: "محمد", status: "presumed", note: "زوجته نورا بنت حسين بن عبدالمحسن",
+                      children: [
+                        { name: "حاكم", status: "presumed" },
+                        { name: "حكيم", status: "presumed",
+                          children: [
+                            { name: "حسين", status: "presumed" },
+                            { name: "صديقة", status: "presumed", note: "زوجة إبراهيم العطافي" },
+                            { name: "سلمى", status: "presumed", note: "الاسم غير واضح في الدفتر" }
+                          ]}
+                      ]},
+                    { name: "عبدالله", status: "presumed",
+                      children: [
+                        { name: "أحمد", status: "presumed" },
+                        { name: "عفيفة", status: "presumed" }
+                      ]},
+                    { name: "عفيفة", status: "presumed", note: "زوجة علي الجعفر" }
+                  ]},
+                { name: "مريم", status: "presumed", note: "زوجة سلمان بن مبارك، أم علي ومبارك" }
               ]},
-            { name: "أحمد", status: "presumed" },
-            { name: "شهاب", status: "presumed" }
+            { name: "أحمد", status: "presumed", note: "لم يُعقب" },
+            { name: "شهاب", status: "presumed", note: "لم يُعقب" }
           ]},
-        { name: "أحمد", status: "known", note: "أخو عبدالله العبيد" },
+        { name: "أحمد", status: "known", note: "أخو عبدالله العبيد · لم يُعقب" },
         { name: "عفيفة", status: "known", note: "أخت عبدالله العبيد · تزوجت من الجعفر" }
       ]
     }]
