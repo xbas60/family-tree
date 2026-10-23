@@ -311,13 +311,17 @@ const DATA = {
                         { name: "محمد", status: "known", note: "زوجته فاطمة بنت محمد بن عبدالله بن حسين (بو جاسم)",
                           children: [
                             { name: "عبدالهادي", status: "known" },
-                            { name: "علي", status: "known" },
+                            { name: "علي", status: "known", note: "متوفى، رحمه الله" },
                             { name: "زهرة", status: "known" },
+                            { name: "مصطفى", status: "known", note: "متوفى، رحمه الله" },
                             { name: "مصطفى", status: "known" },
+                            { name: "حسن", status: "known", note: "متوفى، رحمه الله" },
                             { name: "حسن", status: "known" },
                             { name: "جواد", status: "known" },
                             { name: "فضة", status: "known" },
-                            { name: "زينب", status: "known" }
+                            { name: "زينب", status: "known", note: "متوفاة، رحمها الله" },
+                            { name: "زينب", status: "known" },
+                            { name: "زكي", status: "known", note: "متوفى، رحمه الله" }
                           ]},
                         { name: "لطيفة", status: "known", husband: "عبدالإله", note: "زوجها عبدالإله بن عبدالله بن صالح، ولد عمها",
                           children: [
@@ -366,7 +370,11 @@ const DATA = {
                                 { name: "زهرة", status: "known" },
                                 { name: "علي", status: "known" }
                               ]},
-                            { name: "مريم", status: "known" },
+                            { name: "مريم", status: "known",
+                              children: [
+                                { name: "فاطمة", status: "known", note: "متوفاة، رحمها الله" },
+                                { name: "فاطمة", status: "known", note: "متوفاة، رحمها الله" }
+                              ]},
                             { name: "سارة", status: "known" }
                           ]},
                         { name: "حسين", status: "known", note: "زوجته نوال علي محسن المحمد علي",
@@ -392,7 +400,11 @@ const DATA = {
                           children: [
                             { name: "مهدي", status: "known" },
                             { name: "جواد", status: "known" }
-                          ]}
+                          ]},
+                        { name: "علي", status: "known", note: "متوفى، رحمه الله" },
+                        { name: "إسماعيل", status: "known", note: "متوفى، رحمه الله" },
+                        { name: "جعفر", status: "known", note: "متوفى، رحمه الله" },
+                        { name: "زهرة", status: "known", note: "متوفاة، رحمها الله" }
                       ]},
                     { name: "عبدالله", status: "known", note: "أخو جواد · زوجته مريم بنت عبدالله الحسين",
                       children: [
@@ -564,13 +576,17 @@ const DATA = {
                         { name: "فاطمة", status: "known", husband: "محمد", note: "زوجها محمد بن جواد بن صالح",
                           children: [
                             { name: "عبدالهادي", status: "known" },
-                            { name: "علي", status: "known" },
+                            { name: "علي", status: "known", note: "متوفى، رحمه الله" },
                             { name: "زهرة", status: "known" },
+                            { name: "مصطفى", status: "known", note: "متوفى، رحمه الله" },
                             { name: "مصطفى", status: "known" },
+                            { name: "حسن", status: "known", note: "متوفى، رحمه الله" },
                             { name: "حسن", status: "known" },
                             { name: "جواد", status: "known" },
                             { name: "فضة", status: "known" },
-                            { name: "زينب", status: "known" }
+                            { name: "زينب", status: "known", note: "متوفاة، رحمها الله" },
+                            { name: "زينب", status: "known" },
+                            { name: "زكي", status: "known", note: "متوفى، رحمه الله" }
                           ]},
                         { name: "مريم", status: "known" },
                         { name: "سارة", status: "known" },
@@ -675,7 +691,8 @@ ALL.forEach(F => {
   if (!isF(F) || !F.husband || !F.children) return;
   const H = ALL.find(x => !isF(x) && x.name === F.husband && x.note && x.note.includes(F.name) && x.children && F.children.every(c => x.children.some(h => h.name === c.name)));
   if (!H) return;
-  F.children.forEach(c => { const t = H.children.find(h => h.name === c.name); if (t){ c._same = t; t._same = c; } });
+  const byIdx = F.children.length === H.children.length && F.children.every((c, i) => c.name === H.children[i].name);
+  F.children.forEach((c, i) => { const t = byIdx ? H.children[i] : H.children.find(h => h.name === c.name); if (t){ c._same = t; t._same = c; } });
 });
 const copies = n => n._same ? [n, n._same] : [n];
 const underMother = n => !!(n._p && isF(n._p));
@@ -795,7 +812,7 @@ function showResults(){
     const b = document.createElement("button"); b.type = "button"; b.className = "who-opt"; b.setAttribute("role", "option");
     b.style.setProperty("--gc", GC(n._d));
     const name = document.createElement("b"); name.textContent = lineage(n, 4);
-    const sm = document.createElement("small"); sm.textContent = genName(n._d);
+    const sm = document.createElement("small"); sm.textContent = genName(n._d) + (n.note && n.note.startsWith("متوف") ? " · " + n.note : "");
     b.appendChild(name); b.appendChild(sm);
     b.addEventListener("click", () => chooseMe(n, true));
     whoResults.appendChild(b);
