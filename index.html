@@ -5,124 +5,158 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0}[hidden]{display:none!important}</style>
-<title>مشجّر آل العبدالله</title>
+<title>شجرة آل العبدالله</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700;800&display=swap">
 <style>
-/* Layout: top-down generations. Each generation is a band of siblings; only the chosen line stays open, a stem drops from the open name to its children */
+/* Layout: top-down generations; every generation owns one colour, so a band of siblings, its badge, its names and the stem that feeds it all share that colour */
 :root{
-  --bg:#F3F5F1; --surface:#FFFFFF; --band:#EAEEE8; --fg:#18231C; --muted:#5C6B61; --line:#A9B6AC;
-  --known:#2E6A4D; --known-bg:#E3EFE7;
-  --oral:#8E5F25; --oral-bg:#F5EADB;
-  --presumed:#4F5F8A; --presumed-bg:#E6E9F3;
-  --missing:#6F7A72; --missing-bg:#ECEFEC;
-  --on-accent:#FFFFFF;
-  --display:"Amiri","Noto Naskh Arabic","Times New Roman",serif;
-  --body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --bg:#F6F5F1; --surface:#FFFFFF; --fg:#1F1C19; --muted:#6A645D; --line:#DDD8CF;
+  --accent:#0F6E62; --amber:#A9661A; --amber-bg:#FBF0DF;
+  --on-gc:#FFFFFF;
+  --g1:#7A4A2A; --g2:#A3471E; --g3:#B8285A; --g4:#7A3DA6; --g5:#2F55B0;
+  --g6:#00798A; --g7:#2E7A34; --g8:#8A6C00; --g9:#C2530C; --g10:#5B4A8C;
+  --display:"Reem Kufi","Tajawal","Segoe UI",Tahoma,sans-serif;
+  --body:"Tajawal","Segoe UI",Tahoma,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#111713; --surface:#18201B; --band:#151C17; --fg:#E4EAE5; --muted:#9AA79E; --line:#43514A;
-  --known:#79C29C; --known-bg:#1E2F25; --oral:#DDAA6A; --oral-bg:#33281A;
-  --presumed:#9DAEE0; --presumed-bg:#232A3D; --missing:#8D998F; --missing-bg:#202722;
-  --on-accent:#0E1A13; color-scheme:dark}}
+  --bg:#121211; --surface:#1C1B19; --fg:#ECE8E2; --muted:#A8A196; --line:#3A3733;
+  --accent:#5FC8B6; --amber:#E9B26A; --amber-bg:#2E2518; --on-gc:#141210;
+  --g1:#D9A884; --g2:#F0966A; --g3:#F38DB0; --g4:#C9A0EE; --g5:#94B4F5;
+  --g6:#68D2DE; --g7:#8FD596; --g8:#E5C85A; --g9:#FFAA6B; --g10:#B7A8EC; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#111713; --surface:#18201B; --band:#151C17; --fg:#E4EAE5; --muted:#9AA79E; --line:#43514A;
-  --known:#79C29C; --known-bg:#1E2F25; --oral:#DDAA6A; --oral-bg:#33281A;
-  --presumed:#9DAEE0; --presumed-bg:#232A3D; --missing:#8D998F; --missing-bg:#202722;
-  --on-accent:#0E1A13; color-scheme:dark}
+  --bg:#121211; --surface:#1C1B19; --fg:#ECE8E2; --muted:#A8A196; --line:#3A3733;
+  --accent:#5FC8B6; --amber:#E9B26A; --amber-bg:#2E2518; --on-gc:#141210;
+  --g1:#D9A884; --g2:#F0966A; --g3:#F38DB0; --g4:#C9A0EE; --g5:#94B4F5;
+  --g6:#68D2DE; --g7:#8FD596; --g8:#E5C85A; --g9:#FFAA6B; --g10:#B7A8EC; color-scheme:dark}
 
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.7}
-.wrap{max-width:820px;margin:0 auto;padding-block:28px 48px;
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.7}
+.wrap{max-width:860px;margin:0 auto;padding-block:26px 48px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
-  display:flex;flex-direction:column;gap:22px}
-header{display:flex;flex-direction:column;gap:4px;text-align:center}
-h1{font-family:var(--display);font-weight:700;font-size:2.1rem;line-height:1.3;margin:0;text-wrap:balance}
+  display:flex;flex-direction:column;gap:20px}
+
+/* header */
+header{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.emblem{width:58px;height:58px}
+h1{font-family:var(--display);font-weight:700;font-size:2.3rem;line-height:1.25;margin:0;text-wrap:balance}
 .sub{color:var(--muted);margin:0}
+.gen-strip{display:flex;gap:4px;justify-content:center;margin-top:4px}
+.gen-strip i{width:22px;height:6px;border-radius:3px;display:block}
 
-.notice{display:flex;flex-direction:column;gap:2px;text-align:center;background:var(--oral-bg);color:var(--fg);border:1px solid var(--oral);border-radius:10px;padding:10px 14px;max-width:60ch;margin:0 auto}
-.notice strong{font-family:var(--display);font-size:1.15rem;color:var(--oral)}
+/* notice */
+.notice{display:flex;flex-direction:column;gap:2px;text-align:center;background:var(--amber-bg);border:1px solid var(--amber);border-radius:14px;padding:12px 16px;max-width:62ch;margin:0 auto}
+.notice strong{font-family:var(--display);font-size:1.15rem;color:var(--amber)}
 .phone-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin-top:6px}
-.phone{font-size:1.15rem;font-weight:600;letter-spacing:.06em;font-variant-numeric:tabular-nums;user-select:all;-webkit-user-select:all}
-.copy{font:inherit;font-size:.8rem;background:var(--surface);color:var(--oral);border:1px solid var(--oral);border-radius:999px;padding:2px 12px;cursor:pointer}
-.copy:focus-visible{outline:2px solid var(--oral);outline-offset:2px}
+.phone{font-size:1.15rem;font-weight:700;letter-spacing:.06em;font-variant-numeric:tabular-nums;user-select:all;-webkit-user-select:all}
+.copy{font:inherit;font-size:.82rem;background:var(--surface);color:var(--amber);border:1px solid var(--amber);border-radius:999px;padding:2px 14px;cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 
-.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-.chip{font-size:.8rem;padding:2px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
-.chip i{width:8px;height:8px;border-radius:50%;display:inline-block}
-.c-known{background:var(--known-bg);color:var(--known)} .c-known i{background:var(--known)}
-.c-oral{background:var(--oral-bg);color:var(--oral)} .c-oral i{background:var(--oral)}
-.c-presumed{background:var(--presumed-bg);color:var(--presumed)} .c-presumed i{background:var(--presumed)}
-.c-missing{background:var(--missing-bg);color:var(--missing)} .c-missing i{background:var(--missing)}
-.hint{text-align:center;color:var(--muted);font-size:.85rem;margin:0}
+/* how to read */
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.tip{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:.9rem;min-width:0}
+.tip .ico{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.9rem}
+.tip .ico.colors{background:conic-gradient(var(--g3) 0 25%,var(--g5) 0 50%,var(--g7) 0 75%,var(--g9) 0)}
+.tip .ico.tap{background:var(--g6);color:var(--on-gc)}
+.tip .ico.dash{border:2px dashed var(--muted);color:var(--muted)}
+.source{text-align:center;color:var(--muted);font-size:.85rem;margin:0}
 
-/* the chart */
+/* path */
+.path{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 2px;font-size:.88rem}
+.path .lab{color:var(--muted);margin-inline-end:6px;font-weight:500}
+.crumb{font:inherit;font-weight:700;color:var(--gc);background:color-mix(in srgb,var(--gc) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--gc) 45%,transparent);border-radius:999px;padding:1px 10px;cursor:pointer}
+.crumb:focus-visible{outline:2px solid var(--gc);outline-offset:2px}
+.sep{color:var(--muted);padding-inline:1px}
+
+/* chart */
 .chart{position:relative;display:flex;flex-direction:column;align-items:stretch}
-.band{display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--band);border:1px solid var(--line);border-radius:14px;padding:10px 8px 12px}
-.band.top{background:none;border:0;padding:0}
-.band-label{font-size:.75rem;font-weight:600;color:var(--muted);letter-spacing:.02em}
+.band{--gc:var(--g1);position:relative;display:flex;flex-direction:column;gap:10px;
+  background:color-mix(in srgb,var(--gc) 9%,var(--surface));
+  border:1.5px solid color-mix(in srgb,var(--gc) 40%,transparent);border-radius:18px;padding:12px 10px 14px}
+.band-head{display:flex;align-items:center;gap:10px;padding-inline:4px}
+.badge{flex:none;width:36px;height:36px;border-radius:50%;background:var(--gc);color:var(--on-gc);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.05rem;font-variant-numeric:tabular-nums}
+.band-titles{display:flex;flex-direction:column;line-height:1.35;min-width:0}
+.band-gen{font-family:var(--display);font-weight:700;color:var(--gc);font-size:1rem}
+.band-who{font-size:.85rem;color:var(--muted)}
 .row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:100%}
-.stem{position:relative;height:26px}
-.stem::before{content:"";position:absolute;top:0;bottom:0;left:var(--x,50%);border-left:2px solid var(--line);transform:translateX(-1px)}
+.stem{position:relative;height:30px}
+.stem::before{content:"";position:absolute;top:0;bottom:0;left:var(--x,50%);width:0;border-left:3px solid var(--gc);transform:translateX(-1.5px)}
 .stem.uncertain::before{border-left-style:dashed}
-.stem::after{content:"";position:absolute;bottom:-4px;left:var(--x,50%);width:8px;height:8px;border-radius:50%;background:var(--line);transform:translateX(-4px)}
+.stem::after{content:"";position:absolute;bottom:-5px;left:var(--x,50%);width:10px;height:10px;border-radius:50%;background:var(--gc);transform:translateX(-5px)}
 
-.node{font:inherit;color:inherit;text-align:start;display:inline-flex;flex-direction:column;align-items:flex-start;
-  background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:4px 11px 5px;max-width:100%;min-width:0}
-button.node{cursor:pointer}
-button.node:hover{border-color:var(--fg)}
-button.node:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
-.node .top-line{display:flex;align-items:baseline;gap:8px}
-.node .name{font-family:var(--display);font-size:1.15rem;font-weight:700;line-height:1.45}
-.node .count{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-.node .note{font-size:.74rem;color:var(--muted);line-height:1.5;max-width:30ch}
-.node .pending{font-size:.7rem;color:var(--missing);border:1px dashed var(--missing);border-radius:6px;padding:0 6px;margin-top:2px}
-.node.known{border-color:var(--known)}
-.node.oral{border-color:var(--oral);background:var(--oral-bg)}
-.node.oral .name{color:var(--oral)}
-.node.presumed{border-color:var(--presumed);border-style:dashed}
-.node.missing{border-style:dashed;border-color:var(--missing);background:var(--missing-bg)}
-.node.missing .name{font-family:var(--body);font-size:.85rem;font-weight:500;color:var(--missing)}
+.node{font:inherit;color:inherit;text-align:start;display:inline-flex;flex-direction:column;align-items:flex-start;gap:1px;
+  background:var(--surface);border:1.5px solid color-mix(in srgb,var(--gc) 55%,transparent);border-top:4px solid var(--gc);
+  border-radius:12px;padding:5px 12px 7px;max-width:100%;min-width:0;box-shadow:0 1px 0 color-mix(in srgb,var(--gc) 15%,transparent)}
+button.node{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+button.node:hover{transform:translateY(-1px);box-shadow:0 3px 10px color-mix(in srgb,var(--gc) 22%,transparent)}
+button.node:focus-visible{outline:3px solid var(--gc);outline-offset:2px}
+.node .top-line{display:flex;align-items:center;gap:8px}
+.node .name{font-weight:800;font-size:1.12rem;line-height:1.4}
+.node .count{font-size:.75rem;font-weight:700;color:var(--gc);background:color-mix(in srgb,var(--gc) 13%,transparent);border-radius:999px;padding:0 8px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.node .note{font-size:.76rem;color:var(--muted);line-height:1.5;max-width:30ch}
+.node .tag{font-size:.7rem;font-weight:700;border-radius:6px;padding:0 6px;margin-top:3px}
+.node .tag.pending{color:var(--muted);border:1px dashed var(--muted)}
+.node .tag.unsure{color:var(--gc);border:1px dashed var(--gc)}
+.node.presumed{border-style:dashed;border-top-style:solid}
 
-.node.is-open{border-style:solid;color:var(--on-accent)}
-.node.is-open.known{background:var(--known);border-color:var(--known)}
-.node.is-open.oral{background:var(--oral);border-color:var(--oral)}
-.node.is-open.presumed{background:var(--presumed);border-color:var(--presumed)}
-.node.is-open.missing{background:var(--missing);border-color:var(--missing)}
-.node.is-open .name, .node.is-open .count, .node.is-open .note{color:var(--on-accent)}
-.node.is-open .note, .node.is-open .count{opacity:.88}
+.node.is-open{background:var(--gc);border-color:var(--gc);color:var(--on-gc);box-shadow:0 4px 14px color-mix(in srgb,var(--gc) 35%,transparent)}
+.node.is-open .name,.node.is-open .note{color:var(--on-gc)}
+.node.is-open .note{opacity:.9}
+.node.is-open .count{background:color-mix(in srgb,var(--on-gc) 22%,transparent);color:var(--on-gc)}
+.node.is-open .tag{color:var(--on-gc);border-color:var(--on-gc)}
 
-@keyframes rise{from{opacity:.3;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.band.fresh{animation:rise .22s ease-out}
-@media (prefers-reduced-motion: reduce){.band.fresh{animation:none}}
+@keyframes rise{from{opacity:.35;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.band.fresh{animation:rise .25s ease-out}
+@media (prefers-reduced-motion: reduce){.band.fresh{animation:none} button.node{transition:none} button.node:hover{transform:none}}
 
 /* document section */
-.doc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding-block:18px 20px;padding-inline:18px;display:flex;flex-direction:column;gap:12px}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding-block:18px 20px;padding-inline:18px;display:flex;flex-direction:column;gap:12px}
 .doc h2{font-family:var(--display);font-size:1.5rem;margin:0;text-wrap:balance}
-.doc h3{font-family:var(--display);font-size:1.2rem;margin:10px 0 0}
-.doc h4{font-size:.9rem;margin:0 0 6px}
+.doc h3{font-family:var(--display);font-size:1.15rem;margin:10px 0 0;color:var(--accent)}
+.doc h4{font-size:.92rem;margin:0 0 6px}
 .doc-sub{margin:0;color:var(--muted);max-width:65ch}
 .doc figure{margin:0;display:flex;flex-direction:column;gap:6px}
-.doc img{display:block;width:100%;max-width:560px;height:auto;margin:0 auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.doc img{display:block;width:100%;max-width:560px;height:auto;margin:0 auto;border:1px solid var(--line);border-radius:10px;background:#fff}
 .doc figcaption{font-size:.78rem;color:var(--muted);text-align:center}
 .facts{margin:0;display:grid;gap:6px}
 .facts div{display:grid;grid-template-columns:5.5em 1fr;gap:10px;align-items:baseline}
-.facts dt{font-size:.8rem;font-weight:600;color:var(--muted)}
+.facts dt{font-size:.82rem;font-weight:700;color:var(--muted)}
 .facts dd{margin:0;min-width:0}
-.facts mark{background:var(--known-bg);color:var(--known);font-weight:600;padding:0 4px;border-radius:4px}
-.verdict{margin:0;padding:10px 12px;border-radius:10px;background:var(--presumed-bg);border-inline-start:4px solid var(--presumed);max-width:65ch}
-.verdict strong{color:var(--presumed)}
+.facts mark{background:color-mix(in srgb,var(--accent) 15%,transparent);color:var(--accent);font-weight:700;padding:0 4px;border-radius:4px}
+.verdict{margin:0;padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--g5) 10%,var(--surface));border-inline-start:4px solid var(--g5);max-width:65ch}
+.verdict strong{color:var(--g5)}
 .pros-cons{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
-.pros-cons .col{border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:0}
-.pros-cons .pro h4{color:var(--known)} .pros-cons .con h4{color:var(--oral)}
+.pros-cons .col{border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
+.pros-cons .pro h4{color:var(--g7)} .pros-cons .con h4{color:var(--g9)}
 .pros-cons ul,.next{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:6px}
-.pros-cons li,.next li{font-size:.9rem;max-width:65ch}
+.pros-cons li,.next li{font-size:.92rem;max-width:65ch}
+
+/* who am I */
+.who{background:var(--surface);border:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.who label{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--accent)}
+.who-help{margin:0;color:var(--muted);font-size:.88rem;max-width:65ch}
+.who input{font:inherit;font-size:1rem;width:100%;min-width:0;background:var(--bg);color:var(--fg);border:1.5px solid var(--line);border-radius:12px;padding:8px 12px}
+.who input:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 50%,transparent);border-color:var(--accent)}
+.who-results{display:flex;flex-direction:column;gap:6px}
+.who-results:empty{display:none}
+.who-opt{font:inherit;text-align:start;display:flex;flex-direction:column;gap:0;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-inline-start:4px solid var(--gc);border-radius:10px;padding:6px 12px;cursor:pointer}
+.who-opt:hover{border-color:var(--gc)}
+.who-opt:focus-visible{outline:3px solid var(--gc);outline-offset:1px}
+.who-opt b{font-weight:800}
+.who-opt small{color:var(--muted);font-size:.78rem}
+.who-none{margin:0;font-size:.88rem;color:var(--muted)}
+.who-current{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-weight:700}
+.who-clear{font:inherit;font-size:.82rem;font-weight:700;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:2px 12px;cursor:pointer}
+.node .rel{font-size:.74rem;font-weight:800;background:var(--fg);color:var(--bg);border-radius:999px;padding:0 9px;margin-top:3px;line-height:1.7}
+.node.is-open .rel{background:var(--on-gc);color:var(--gc)}
+.node.is-me{outline:3px solid var(--fg);outline-offset:2px}
 .foot{text-align:center;color:var(--muted);font-size:.8rem;margin:0}
 @media (max-width:420px){
-  h1{font-size:1.75rem}
-  .node{padding:3px 9px 4px}
-  .node .name{font-size:1.05rem}
+  h1{font-size:1.9rem}
+  .node{padding:4px 10px 6px}
+  .node .name{font-size:1.04rem}
   .row{gap:6px}
+  .badge{width:32px;height:32px;font-size:.95rem}
 }
 </style>
 
@@ -130,8 +164,18 @@ button.node:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
 <body>
 <main class="wrap" dir="rtl" lang="ar">
   <header>
-    <h1>مشجّر آل العبدالله</h1>
+    <svg class="emblem" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M32 60 C31 46 31 36 32 24" fill="none" stroke="var(--g1)" stroke-width="3.2" stroke-linecap="round"/>
+      <path d="M32 24 C24 14 14 13 6 18 C15 18 23 20 32 24Z" fill="var(--g7)"/>
+      <path d="M32 24 C40 14 50 13 58 18 C49 18 41 20 32 24Z" fill="var(--g6)"/>
+      <path d="M32 24 C27 12 28 6 32 2 C36 6 37 12 32 24Z" fill="var(--g8)"/>
+      <path d="M32 24 C22 22 13 27 10 35 C17 29 24 27 32 24Z" fill="var(--g3)"/>
+      <path d="M32 24 C42 22 51 27 54 35 C47 29 40 27 32 24Z" fill="var(--g5)"/>
+      <circle cx="28" cy="28" r="2.2" fill="var(--g2)"/><circle cx="36" cy="28" r="2.2" fill="var(--g9)"/><circle cx="32" cy="30" r="2.2" fill="var(--g4)"/>
+    </svg>
+    <h1>شجرة آل العبدالله</h1>
     <p class="sub">المنيزلة، الأحساء · الفروع: المبارك، العبدالمحسن، العيسى</p>
+    <div class="gen-strip" aria-hidden="true"><i style="background:var(--g1)"></i><i style="background:var(--g2)"></i><i style="background:var(--g3)"></i><i style="background:var(--g4)"></i><i style="background:var(--g5)"></i><i style="background:var(--g6)"></i><i style="background:var(--g7)"></i><i style="background:var(--g8)"></i><i style="background:var(--g9)"></i><i style="background:var(--g10)"></i></div>
   </header>
 
   <aside class="notice" role="note">
@@ -143,16 +187,26 @@ button.node:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
     </span>
   </aside>
 
-  <div class="legend" aria-label="دليل الألوان">
-    <span class="chip c-known"><i></i>من سلسلة النسب</span>
-    <span class="chip c-oral"><i></i>رواية العائلة</span>
-    <span class="chip c-presumed"><i></i>مرجّح، يحتاج تأكيد</span>
-    <span class="chip c-missing"><i></i>بانتظار الأسماء</span>
+  <div class="howto" aria-label="كيف تقرأ الشجرة">
+    <div class="tip"><span class="ico colors" aria-hidden="true"></span><span>كل جيل له لون، والإخوان في صندوق واحد بنفس اللون</span></div>
+    <div class="tip"><span class="ico tap" aria-hidden="true">▾</span><span>اضغط على أي اسم عنده رقم عشان ينفتح عياله</span></div>
+    <div class="tip"><span class="ico dash" aria-hidden="true">؟</span><span>الإطار المتقطع يعني الاسم يحتاج تأكيد</span></div>
   </div>
 
-  <p class="hint">ترتيب الأجيال مأخوذ من دفتر بو عاطف المكتوب سنة ١٤١٢هـ، وهو تجميع من مصادر مختلفة، مع إضافات أهل العائلة</p>
+  <p class="source">ترتيب الأجيال مأخوذ من مصادر من العائلة</p>
 
-  <p class="hint">اضغط على أي اسم عنده عيال عشان تنزل لذريته، وتنطوي الفروع الثانية تلقائياً</p>
+  <section class="who" aria-labelledby="who-label">
+    <label id="who-label" for="who-input">مين أنت؟</label>
+    <p class="who-help">اكتب اسمك واسم أبوك، وبيطلع لك عند كل اسم في الشجرة وش صلته فيك، مثل «جدك أبو أبوك» أو «ولد عمك».</p>
+    <input id="who-input" type="search" placeholder="مثلاً: حسين علي" autocomplete="off" enterkeyhint="search">
+    <div id="who-results" class="who-results" role="listbox" aria-label="نتائج البحث"></div>
+    <div id="who-current" class="who-current" hidden>
+      <span id="who-hello"></span>
+      <button type="button" class="who-clear" id="who-clear">تغيير الاسم</button>
+    </div>
+  </section>
+
+  <nav class="path" id="path" aria-label="المسار المفتوح"></nav>
 
   <div class="chart" id="chart" aria-live="polite"></div>
 
@@ -234,7 +288,16 @@ const DATA = {
                       children: [
                         { name: "مريم", status: "known", note: "زوجها شريدة الفحل" },
                         { name: "حسين", status: "known" },
-                        { name: "عبدالرسول", status: "known" },
+                        { name: "عبدالرسول", status: "known", note: "زوجته آسيا بنت جواد بن صالح",
+                          children: [
+                            { name: "فخري", status: "known" },
+                            { name: "حيدر", status: "known" },
+                            { name: "فاطمة", status: "known" },
+                            { name: "علي", status: "known" },
+                            { name: "زينب", status: "known" },
+                            { name: "مريم", status: "known" },
+                            { name: "زهرة", status: "known" }
+                          ]},
                         { name: "سلمان", status: "known" },
                         { name: "صادق", status: "known" },
                         { name: "زهراء", status: "known" }
@@ -269,7 +332,7 @@ const DATA = {
                             { name: "عفاف", status: "known" },
                             { name: "علي", status: "known" }
                           ]},
-                        { name: "آسيا", status: "known",
+                        { name: "آسيا", status: "known", husband: "عبدالرسول", note: "زوجها عبدالرسول بن مبارك بن سلمان",
                           children: [
                             { name: "فخري", status: "known" },
                             { name: "حيدر", status: "known" },
@@ -326,7 +389,7 @@ const DATA = {
                     { name: "عبدالله", status: "known", note: "أخو جواد · زوجته مريم بنت عبدالله الحسين",
                       children: [
                         { name: "عبدالإله", status: "known" },
-                        { name: "بتلاء", status: "known", note: "زوجها عبدالله بن عبدالمحسن",
+                        { name: "بتلاء", status: "known", husband: "عبدالله", note: "زوجها عبدالله بن عبدالمحسن",
                           children: [
                             { name: "شعاع", status: "known", note: "زوجة موسى بن جواد" },
                             { name: "عبدالمحسن", status: "known" }
@@ -559,64 +622,264 @@ const AR = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
 const UNSURE = s => s === "presumed" || s === "missing" || s === "oral";
 const hasKids = n => !!(n.children && n.children.length);
 const reduceMotion = (() => { try { return matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) { return false; } })();
+const GC = depth => "var(--g" + ((depth % 10) + 1) + ")";
+const ORD = ["الأول","الثاني","الثالث","الرابع","الخامس","السادس","السابع","الثامن","التاسع","العاشر","الحادي عشر","الثاني عشر"];
+const genName = depth => "الجيل " + (ORD[depth] || AR(depth + 1));
+const shortName = n => n.name.replace(/[؟?]/g, "").replace(/\s*\(.*\)/, "");
 
 // open[i] هو الاسم المفتوح في الجيل i؛ open[0] هو الجد الأول
 let open = [DATA.root];
 DEFAULT_PATH.forEach(i => { const last = open[open.length - 1]; if (hasKids(last) && last.children[i]) open.push(last.children[i]); });
 
+// ===== مين أنت: صلة كل اسم بالزائر =====
+const FEMALE = new Set(["زهراء","فضيلة","مريم","أم هاشم","زهرة","فضة","زينب","لطيفة","فاطمة","ليلى","عفاف","آسيا","حور","سارة","بتلاء","شعاع","طوعة","بدرية","نعيمة","معصومة","غنية","أحلام","رقية","حجية","آمنة","راضية","قبلة","سكينة","نورا","فائزة","حسنى","صفية","زكية","صديقة","أميرة","لولوة","سلمى","عفيفة"]);
+const isF = n => FEMALE.has(n.name);
+(function index(n, parent, depth, id){
+  n._p = parent; n._d = depth; n._id = id;
+  (n.children || []).forEach((c, i) => index(c, n, depth + 1, id + "." + i));
+})(DATA.root, null, 0, "0");
+const ALL = []; (function walk(n){ ALL.push(n); (n.children || []).forEach(walk); })(DATA.root);
+const chainUp = n => { const a = []; for (let x = n; x; x = x._p) a.push(x); return a; };
+// نفس الشخص لو مكتوب تحت أبوه وتحت أمه
+ALL.forEach(F => {
+  if (!isF(F) || !F.husband || !F.children) return;
+  const H = ALL.find(x => !isF(x) && x.name === F.husband && x.note && x.note.includes(F.name) && x.children);
+  if (!H) return;
+  F.children.forEach(c => { const t = H.children.find(h => h.name === c.name); if (t){ c._same = t; t._same = c; } });
+});
+const copies = n => n._same ? [n, n._same] : [n];
+const underMother = n => !!(n._p && isF(n._p));
+// سلسلة النسب من جهة الأب: توقف عند الأم، وتاخذ اسم الأب لو معروف
+function fatherChain(n){
+  const a = [n];
+  for (let x = n; x._p; x = x._p){
+    if (isF(x._p)){ if (x._p.husband) a.push({ name: x._p.husband }); break; }
+    a.push(x._p);
+  }
+  return a;
+}
+
+// يختار أقرب صلة لو الشخص مكتوب في مكانين، تحت أبوه وتحت أمه
+function relation(V, T){
+  let best = null;
+  for (const v of copies(V)) for (const t of copies(T)){
+    if (v === t) return "أنت";
+    const av = chainUp(v), at = chainUp(t), inT = new Set(at);
+    const L = av.find(x => inT.has(x));
+    const dist = av.indexOf(L) + at.indexOf(L);
+    if (!best || dist < best.dist) best = { dist, v, t };
+  }
+  return relationOne(best.v, best.t);
+}
+function relationOne(V, T){
+  if (V === T) return "أنت";
+  const av = chainUp(V), at = chainUp(T);
+  const inT = new Set(at);
+  const L = av.find(x => inT.has(x));
+  const up = av.indexOf(L), down = at.indexOf(L);
+  const fT = isF(T);
+  const sonOf = fT ? "بنت " : "ولد ";
+  if (up === 0){
+    if (down === 1) return fT ? "بنتك" : "ولدك";
+    if (down === 2) return fT ? "حفيدتك" : "حفيدك";
+    return "من ذريتك";
+  }
+  if (down === 0){
+    const p1 = isF(av[1]) ? "أمك" : "أبوك";
+    if (up === 1) return fT ? "أمك" : "أبوك";
+    if (up === 2) return (fT ? "جدتك أم " : "جدك أبو ") + p1;
+    if (up === 3) return (fT ? "جدة " : "جد ") + p1;
+    if (up === 4) return (fT ? "جدة جدك" : "جد جدك");
+    return (fT ? "جدتك " : "جدك ") + (ORD[up - 1] || AR(up));
+  }
+  const c = at[down - 1]; // ولد الجد المشترك اللي من جهة الاسم
+  if (up === 1){
+    const sib = isF(c) ? "أختك" : "أخوك";
+    if (down === 1) return fT ? "أختك" : "أخوك";
+    if (down === 2) return sonOf + sib;
+    return "من ذرية " + sib;
+  }
+  if (up === 2){
+    const kin = isF(av[1]) ? (isF(c) ? "خالتك" : "خالك") : (isF(c) ? "عمتك" : "عمك");
+    if (down === 1) return kin;
+    if (down === 2) return sonOf + kin;
+    return "من ذرية " + kin;
+  }
+  if (up === 3){
+    const kin = isF(av[2]) ? (isF(c) ? "خالة" : "خال") : (isF(c) ? "عمة" : "عم");
+    const of = kin + " " + (isF(av[1]) ? "أمك" : "أبوك");
+    if (down === 1) return of;
+    if (down === 2) return sonOf + of;
+    return "من ذرية " + of;
+  }
+  return "تلتقون عند " + shortName(L) + (L._p ? " بن " + shortName(L._p) : "");
+}
+
+const norm = t => t.replace(/[أإآ]/g, "ا").replace(/ة/g, "ه").replace(/ى/g, "ي").replace(/[ًٌٍَُِّْـ]/g, "").trim();
+const SKIP = new Set(["بن","بنت","ابن","ال"]);
+function searchPeople(q){
+  const toks = q.split(/\s+/).map(norm).filter(t => t && !SKIP.has(t));
+  if (!toks.length) return [];
+  const out = [];
+  ALL.forEach(n => {
+    if (underMother(n) && n._same) return; // نفس الشخص موجود تحت أبوه
+    const up = fatherChain(n);
+    let k = 0, ti = 0;
+    while (ti < toks.length){
+      const t = toks[ti];
+      if (k < up.length && norm(up[k].name).startsWith(t)){ k++; ti++; continue; }
+      if (ti > 0 && t.startsWith("ال")){ ti++; continue; } // اسم العائلة مثل العبدالله
+      return;
+    }
+    if (k) out.push({ n, score: k * 10 + n._d });
+  });
+  out.sort((a, b) => b.score - a.score);
+  return out.slice(0, 8).map(o => o.n);
+}
+// النسب في البحث ينكتب من جهة الأب بس
+function lineage(n, k){
+  const up = fatherChain(n).slice(0, k);
+  let out = up[0].name;
+  for (let i = 1; i < up.length; i++) out += (isF(up[i - 1]) ? " بنت " : " بن ") + up[i].name;
+  if (up.length === 1 && underMother(n)) out += isF(n) ? " · أبوها غير مسجل في الشجرة" : " · أبوه غير مسجل في الشجرة";
+  return out;
+}
+
+let ME = null;
+const whoInput = document.getElementById("who-input");
+const whoResults = document.getElementById("who-results");
+const whoCurrent = document.getElementById("who-current");
+const whoHello = document.getElementById("who-hello");
+
+function showResults(){
+  whoResults.textContent = "";
+  const q = whoInput.value;
+  if (!q.trim()) return;
+  const res = searchPeople(q);
+  if (!res.length){
+    const p = document.createElement("p"); p.className = "who-none";
+    p.textContent = "ما لقيت هالاسم في الشجرة. إذا اسمك مو موجود، تواصل مع جعفر عشان يضيفه.";
+    whoResults.appendChild(p); return;
+  }
+  res.forEach(n => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "who-opt"; b.setAttribute("role", "option");
+    b.style.setProperty("--gc", GC(n._d));
+    const name = document.createElement("b"); name.textContent = lineage(n, 4);
+    const sm = document.createElement("small"); sm.textContent = genName(n._d);
+    b.appendChild(name); b.appendChild(sm);
+    b.addEventListener("click", () => chooseMe(n, true));
+    whoResults.appendChild(b);
+  });
+}
+
+function chooseMe(n, save){
+  ME = n;
+  if (save) try { localStorage.setItem("who-id", n._id); } catch (e) {}
+  whoInput.value = ""; whoResults.textContent = "";
+  whoInput.hidden = true;
+  whoHello.textContent = "أهلاً " + n.name + "، صار مكتوب عند كل اسم صلته فيك.";
+  whoCurrent.hidden = false;
+  const chain = chainUp(n).reverse();
+  open = hasKids(n) ? chain : chain.slice(0, -1);
+  render(n._d);
+}
+
+document.getElementById("who-clear").addEventListener("click", () => {
+  ME = null;
+  try { localStorage.removeItem("who-id"); } catch (e) {}
+  whoCurrent.hidden = true; whoInput.hidden = false; whoInput.value = "";
+  render(null);
+  try { whoInput.focus(); } catch (e) {}
+});
+whoInput.addEventListener("input", showResults);
+
 const chart = document.getElementById("chart");
+const pathNav = document.getElementById("path");
 
 function card(n, depth){
   const expandable = hasKids(n);
+  const isOpen = open[depth] === n;
   const el = document.createElement(expandable ? "button" : "div");
   if (expandable) el.type = "button";
-  el.className = "node " + n.status + (open[depth] === n ? " is-open" : "");
+  el.className = "node " + n.status + (isOpen ? " is-open" : "");
   if (expandable){
-    el.setAttribute("aria-expanded", open[depth] === n ? "true" : "false");
+    el.setAttribute("aria-expanded", isOpen ? "true" : "false");
     el.addEventListener("click", () => toggle(n, depth));
   }
   const line = document.createElement("span"); line.className = "top-line";
   const nm = document.createElement("span"); nm.className = "name"; nm.textContent = n.name; line.appendChild(nm);
   if (expandable){
     const c = document.createElement("span"); c.className = "count";
-    c.textContent = AR(n.children.length) + (open[depth] === n ? " ▴" : " ▾");
+    c.textContent = AR(n.children.length) + (isOpen ? " ▴" : " ▾");
+    c.setAttribute("aria-label", AR(n.children.length) + " من العيال");
     line.appendChild(c);
   }
   el.appendChild(line);
+  if (ME){
+    const r = relation(ME, n);
+    const chip = document.createElement("span"); chip.className = "rel"; chip.textContent = r; el.appendChild(chip);
+    if (n === ME) el.classList.add("is-me");
+  }
   if (n.note){ const t = document.createElement("span"); t.className = "note"; t.textContent = n.note; el.appendChild(t); }
-  if (n.pending){ const p = document.createElement("span"); p.className = "pending"; p.textContent = "الذرية: بانتظار الأسماء"; el.appendChild(p); }
+  if (n.status === "presumed"){ const u = document.createElement("span"); u.className = "tag unsure"; u.textContent = "يحتاج تأكيد"; el.appendChild(u); }
+  if (n.pending){ const p = document.createElement("span"); p.className = "tag pending"; p.textContent = "الذرية: بانتظار الأسماء"; el.appendChild(p); }
   return el;
 }
 
-function bandLabel(parent){
+function bandWho(parent){
   if (parent.label) return parent.label;
-  if (parent.status === "missing") return "بعدهم";
-  return "عيال " + parent.name.replace(/[؟?]/g, "").replace(/\s*\(.*\)/, "") + " · " + AR(parent.children.length);
+  return "عيال " + shortName(parent) + " · " + AR(parent.children.length);
+}
+
+function makeBand(depth, who, fresh){
+  const band = document.createElement("section");
+  band.className = "band" + (fresh ? " fresh" : "");
+  band.dataset.depth = String(depth);
+  band.style.setProperty("--gc", GC(depth));
+  const head = document.createElement("div"); head.className = "band-head";
+  const badge = document.createElement("span"); badge.className = "badge"; badge.textContent = AR(depth + 1); badge.setAttribute("aria-hidden", "true");
+  const titles = document.createElement("div"); titles.className = "band-titles";
+  const g = document.createElement("span"); g.className = "band-gen"; g.textContent = genName(depth);
+  const w = document.createElement("span"); w.className = "band-who"; w.textContent = who;
+  titles.appendChild(g); titles.appendChild(w);
+  head.appendChild(badge); head.appendChild(titles);
+  band.appendChild(head);
+  const row = document.createElement("div"); row.className = "row";
+  band.appendChild(row);
+  return { band, row };
+}
+
+function renderPath(){
+  pathNav.textContent = "";
+  const lab = document.createElement("span"); lab.className = "lab"; lab.textContent = "المسار:"; pathNav.appendChild(lab);
+  open.forEach((n, i) => {
+    if (i){ const s = document.createElement("span"); s.className = "sep"; s.textContent = "←"; s.setAttribute("aria-hidden", "true"); pathNav.appendChild(s); }
+    const b = document.createElement("button"); b.type = "button"; b.className = "crumb";
+    b.style.setProperty("--gc", GC(i));
+    b.textContent = shortName(n);
+    b.title = genName(i);
+    b.addEventListener("click", () => { open = open.slice(0, i + 1); render(i + 1 < open.length ? null : i + 1); });
+    pathNav.appendChild(b);
+  });
 }
 
 function render(freshDepth){
   chart.textContent = "";
-  // الجيل الأول
-  const top = document.createElement("section"); top.className = "band top"; top.dataset.depth = "0";
-  const r0 = document.createElement("div"); r0.className = "row"; r0.appendChild(card(DATA.root, 0)); top.appendChild(r0);
-  chart.appendChild(top);
-  // كل اسم مفتوح ينزل تحته جيل عياله
+  const top = makeBand(0, "الجد الأعلى", false);
+  top.row.appendChild(card(DATA.root, 0));
+  chart.appendChild(top.band);
   open.forEach((parent, i) => {
     if (!hasKids(parent)) return;
     const stem = document.createElement("div");
     stem.className = "stem" + (UNSURE(parent.status) ? " uncertain" : "");
     stem.dataset.from = String(i);
+    stem.style.setProperty("--gc", GC(i));
     chart.appendChild(stem);
-    const band = document.createElement("section");
-    band.className = "band" + (freshDepth === i + 1 ? " fresh" : "");
-    band.dataset.depth = String(i + 1);
-    const lab = document.createElement("div"); lab.className = "band-label"; lab.textContent = bandLabel(parent);
-    band.appendChild(lab);
-    const row = document.createElement("div"); row.className = "row";
-    parent.children.forEach(ch => row.appendChild(card(ch, i + 1)));
-    band.appendChild(row);
-    chart.appendChild(band);
+    const b = makeBand(i + 1, bandWho(parent), freshDepth === i + 1);
+    parent.children.forEach(ch => b.row.appendChild(card(ch, i + 1)));
+    chart.appendChild(b.band);
   });
+  renderPath();
   placeStems();
   if (freshDepth != null){
     const target = chart.querySelector('.band[data-depth="' + freshDepth + '"]');
@@ -638,10 +901,10 @@ function placeStems(){
 
 function toggle(n, depth){
   if (open[depth] === n){
-    open = open.slice(0, depth);          // يطوي هالاسم وكل اللي تحته
+    open = open.slice(0, depth);
     render(null);
   } else {
-    open = open.slice(0, depth).concat([n]); // يفتح هالاسم، ويطوي إخوانه وفروعهم
+    open = open.slice(0, depth).concat([n]);
     render(depth + 1);
   }
   const btn = Array.from(chart.querySelectorAll('.band[data-depth="' + depth + '"] button.node'))
@@ -650,6 +913,7 @@ function toggle(n, depth){
 }
 
 render(null);
+try { const saved = localStorage.getItem("who-id"); const me = saved && ALL.find(x => x._id === saved); if (me) chooseMe(me, false); } catch (e) {}
 addEventListener("resize", placeStems);
 try { document.fonts.ready.then(placeStems); } catch (e) {}
 
@@ -663,5 +927,6 @@ copyBtn.addEventListener("click", () => {
 document.getElementById("foot").textContent = "آخر تحديث: " + DATA.updated;
 </script>
 
+<script data-goatcounter="https://xbas60.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
