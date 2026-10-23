@@ -264,7 +264,7 @@ button.node:focus-visible{outline:3px solid var(--gc);outline-offset:2px}
 <script>
 // ===== بيانات الشجرة: كل شخص له خانة، وعياله تحته =====
 const DATA = {
-  updated: "٢١ أكتوبر ٢٠٢٦",
+  updated: "٢٣ أكتوبر ٢٠٢٦",
   root: {
     name: "عبيد", status: "known", note: "الجد الأعلى، ومنه اسم العبيد",
     children: [{
@@ -308,7 +308,7 @@ const DATA = {
                   children: [
                     { name: "جواد", status: "known", note: "زوجته: فضة بنت عبدالمحسن",
                       children: [
-                        { name: "محمد", status: "known",
+                        { name: "محمد", status: "known", note: "زوجته فاطمة بنت محمد بن عبدالله بن حسين (بو جاسم)",
                           children: [
                             { name: "عبدالهادي", status: "known" },
                             { name: "علي", status: "known" },
@@ -319,7 +319,7 @@ const DATA = {
                             { name: "فضة", status: "known" },
                             { name: "زينب", status: "known" }
                           ]},
-                        { name: "لطيفة", status: "known",
+                        { name: "لطيفة", status: "known", husband: "عبدالإله", note: "زوجها عبدالإله بن عبدالله بن صالح، ولد عمها",
                           children: [
                             { name: "فاطمة", status: "known" },
                             { name: "عيسى", status: "known" },
@@ -369,11 +369,19 @@ const DATA = {
                             { name: "مريم", status: "known" },
                             { name: "سارة", status: "known" }
                           ]},
-                        { name: "حسين", status: "known",
+                        { name: "حسين", status: "known", note: "زوجته نوال علي محسن المحمد علي",
                           children: [
                             { name: "علي", status: "known" },
                             { name: "محمد", status: "known" },
-                            { name: "فاطمة", status: "known" }
+                            { name: "فاطمة", status: "known", husband: "مرتضى بن زكريا الشواف", note: "زوجها مرتضى بن زكريا الشواف",
+                              children: [
+                                { name: "زكريا", status: "known" },
+                                { name: "جنات", status: "known" }
+                              ]},
+                            { name: "زهراء", status: "known" },
+                            { name: "حوراء", status: "known" },
+                            { name: "مهدي", status: "known" },
+                            { name: "نرجس", status: "known" }
                           ]},
                         { name: "ياسين", status: "known",
                           children: [
@@ -388,7 +396,19 @@ const DATA = {
                       ]},
                     { name: "عبدالله", status: "known", note: "أخو جواد · زوجته مريم بنت عبدالله الحسين",
                       children: [
-                        { name: "عبدالإله", status: "known" },
+                        { name: "عبدالإله", status: "known", note: "زوجته لطيفة بنت جواد بن صالح، بنت عمه",
+                          children: [
+                            { name: "فاطمة", status: "known" },
+                            { name: "عيسى", status: "known" },
+                            { name: "أحمد", status: "known" },
+                            { name: "ليلى", status: "known" },
+                            { name: "فاضل", status: "known" },
+                            { name: "مريم", status: "known" },
+                            { name: "مرتضى", status: "known" },
+                            { name: "زهرة", status: "known" },
+                            { name: "عفاف", status: "known" },
+                            { name: "علي", status: "known" }
+                          ]},
                         { name: "بتلاء", status: "known", husband: "عبدالله", note: "زوجها عبدالله بن عبدالمحسن",
                           children: [
                             { name: "شعاع", status: "known", note: "زوجة موسى بن جواد" },
@@ -541,7 +561,17 @@ const DATA = {
                         { name: "علي", status: "known" },
                         { name: "عبدالله", status: "known", note: "من زوجة ثانية" },
                         { name: "عيسى", status: "known", note: "من زوجة ثانية" },
-                        { name: "فاطمة", status: "known" },
+                        { name: "فاطمة", status: "known", husband: "محمد", note: "زوجها محمد بن جواد بن صالح",
+                          children: [
+                            { name: "عبدالهادي", status: "known" },
+                            { name: "علي", status: "known" },
+                            { name: "زهرة", status: "known" },
+                            { name: "مصطفى", status: "known" },
+                            { name: "حسن", status: "known" },
+                            { name: "جواد", status: "known" },
+                            { name: "فضة", status: "known" },
+                            { name: "زينب", status: "known" }
+                          ]},
                         { name: "مريم", status: "known" },
                         { name: "سارة", status: "known" },
                         { name: "أميرة", status: "known" },
@@ -632,7 +662,7 @@ let open = [DATA.root];
 DEFAULT_PATH.forEach(i => { const last = open[open.length - 1]; if (hasKids(last) && last.children[i]) open.push(last.children[i]); });
 
 // ===== مين أنت: صلة كل اسم بالزائر =====
-const FEMALE = new Set(["زهراء","فضيلة","مريم","أم هاشم","زهرة","فضة","زينب","لطيفة","فاطمة","ليلى","عفاف","آسيا","حور","سارة","بتلاء","شعاع","طوعة","بدرية","نعيمة","معصومة","غنية","أحلام","رقية","حجية","آمنة","راضية","قبلة","سكينة","نورا","فائزة","حسنى","صفية","زكية","صديقة","أميرة","لولوة","سلمى","عفيفة"]);
+const FEMALE = new Set(["زهراء","فضيلة","مريم","أم هاشم","زهرة","فضة","زينب","لطيفة","فاطمة","ليلى","عفاف","آسيا","حور","سارة","بتلاء","شعاع","طوعة","بدرية","نعيمة","معصومة","غنية","أحلام","رقية","حجية","آمنة","راضية","قبلة","سكينة","نورا","فائزة","حسنى","صفية","زكية","صديقة","أميرة","لولوة","سلمى","عفيفة","حوراء","نرجس","جنات","نوال"]);
 const isF = n => FEMALE.has(n.name);
 (function index(n, parent, depth, id){
   n._p = parent; n._d = depth; n._id = id;
@@ -643,7 +673,7 @@ const chainUp = n => { const a = []; for (let x = n; x; x = x._p) a.push(x); ret
 // نفس الشخص لو مكتوب تحت أبوه وتحت أمه
 ALL.forEach(F => {
   if (!isF(F) || !F.husband || !F.children) return;
-  const H = ALL.find(x => !isF(x) && x.name === F.husband && x.note && x.note.includes(F.name) && x.children);
+  const H = ALL.find(x => !isF(x) && x.name === F.husband && x.note && x.note.includes(F.name) && x.children && F.children.every(c => x.children.some(h => h.name === c.name)));
   if (!H) return;
   F.children.forEach(c => { const t = H.children.find(h => h.name === c.name); if (t){ c._same = t; t._same = c; } });
 });
@@ -653,7 +683,7 @@ const underMother = n => !!(n._p && isF(n._p));
 function fatherChain(n){
   const a = [n];
   for (let x = n; x._p; x = x._p){
-    if (isF(x._p)){ if (x._p.husband) a.push({ name: x._p.husband }); break; }
+    if (isF(x._p)){ if (x._p.husband) x._p.husband.split(/\s+بن\s+/).forEach(nm => a.push({ name: nm })); break; }
     a.push(x._p);
   }
   return a;
