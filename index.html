@@ -488,7 +488,7 @@ const DATA = {
                         { name: "فاطمة", status: "known", note: "زوجة علي بن صالح العطافي" },
                         { name: "فضة", status: "known", husband: "جواد", note: "زوجة جواد بن صالح" },
                         { name: "حجية", status: "known", note: "زوجة كاظم البراهيم" },
-                        { name: "آمنة", status: "known", note: "زوجة محمد الحمد" },
+                        { name: "آمنة", status: "known", husband: "محمد", kids: [], note: "زوجة محمد الحمد" },
                         { name: "راضية", status: "known", husband: "عبدالكريم", note: "زوجة عبدالكريم بن عبدالنبي، ثم حسين يعقوب السعيد",
                           children: [
                             { name: "يوسف", status: "known", father: "حسين يعقوب السعيد", note: "أبوه حسين يعقوب السعيد · زوجته مريم بنت موسى بن جواد",
@@ -500,8 +500,8 @@ const DATA = {
                           ]},
                         { name: "قبلة", status: "known", note: "زوجة علي العلي" },
                         { name: "سكينة", status: "known", note: "زوجة حسين بن علي العبدالمحسن" },
-                        { name: "نعيمة", status: "known", note: "زوجة صالح بن علي العبدالمحسن" },
-                        { name: "معصومة", status: "known", note: "زوجة طاهر بن علي العبدالمحسن" }
+                        { name: "نعيمة", status: "known", husband: "صالح", note: "زوجة صالح بن علي العبدالمحسن" },
+                        { name: "معصومة", status: "known", husband: "طاهر", note: "زوجة طاهر بن علي العبدالمحسن" }
                       ]},
                     { name: "علي", status: "known" },
                     { name: "نورا", status: "known", husband: "محمد", note: "زوجة محمد بن أحمد العيسى، أم حاكم العيسى" }
@@ -514,19 +514,21 @@ const DATA = {
                         { name: "علي", status: "known" },
                         { name: "عبدالمحسن", status: "known" },
                         { name: "فاطمة", status: "known", note: "زوجة أحمد عبدالقادر الديلم" },
-                        { name: "فائزة", status: "known", note: "زوجة محمد الحمد" },
+                        { name: "فائزة", status: "known", husband: "حمد", note: "زوجة حمد بن محمد الحمد" },
                         { name: "زهراء", status: "known" },
                         { name: "مريم", status: "known" }
                       ]},
-                    { name: "صالح", status: "known",
+                    { name: "صالح", status: "known", note: "زوجته نعيمة بنت عبدالمحسن بن حسين",
                       children: [
                         { name: "عبدالمنعم", status: "known" },
                         { name: "محمد", status: "known" },
                         { name: "علي", status: "known" },
                         { name: "حسين", status: "known" },
-                        { name: "مرتضى", status: "known" }
+                        { name: "مرتضى", status: "known" },
+                        { name: "زهرة", status: "known" },
+                        { name: "فاطمة", status: "known" }
                       ]},
-                    { name: "طاهر", status: "known",
+                    { name: "طاهر", status: "known", note: "زوجته معصومة بنت عبدالمحسن بن حسين",
                       children: [
                         { name: "زكي", status: "known" },
                         { name: "عبدالله", status: "known" },
@@ -633,11 +635,11 @@ const DATA = {
               ]},
             { name: "محمد", status: "known", note: "زوجته مريم بنت حسين بن عبدالله",
               children: [
-                { name: "محمد", status: "known", note: "المعروف بمحمد الحمد · أبو حمد",
+                { name: "محمد", status: "known", note: "المعروف بمحمد الحمد · أبو حمد · زوجته آمنة بنت عبدالمحسن بن حسين",
                   children: [
-                    { name: "حمد", status: "known" },
+                    { name: "حمد", status: "known", note: "زوجته فائزة بنت حسين بن علي بن عبدالمحسن" },
                     { name: "علي", status: "known" },
-                    { name: "عبدالله", status: "known" },
+                    { name: "عبدالله", status: "known", note: "زوجته ليلى علي محسن المحمد علي، أخت نوال زوجة حسين بن جواد" },
                     { name: "حسين", status: "known" }
                   ]}
               ]},
