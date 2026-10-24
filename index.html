@@ -309,22 +309,45 @@ const DATA = {
                     { name: "مبارك", status: "known",
                       children: [
                         { name: "مريم", status: "known", note: "زوجها شريدة الفحل" },
-                        { name: "حسين", status: "known" },
+                        { name: "حسين", status: "known",
+                          children: [
+                            { name: "علي", status: "known" },
+                            { name: "محمد", status: "known" },
+                            { name: "ياسر", status: "known" },
+                            { name: "أحمد", status: "known" }
+                          ]},
                         { name: "عبدالرسول", status: "known", note: "زوجته آسيا بنت جواد بن صالح",
                           children: [
                             { name: "فخري", status: "known", note: "زوجته مريم بنت عبدالإله بن عبدالله بن صالح",
                               children: [
                                 { name: "محمد", status: "known" }
                               ]},
-                            { name: "حيدر", status: "known" },
+                            { name: "حيدر", status: "known",
+                              children: [
+                                { name: "حسن", status: "known" }
+                              ]},
                             { name: "فاطمة", status: "known" },
-                            { name: "علي", status: "known" },
+                            { name: "علي", status: "known",
+                              children: [
+                                { name: "حسين", status: "known" },
+                                { name: "حسن", status: "known" }
+                              ]},
                             { name: "زينب", status: "known" },
                             { name: "مريم", status: "known" },
                             { name: "زهرة", status: "known" }
                           ]},
-                        { name: "سلمان", status: "known" },
-                        { name: "صادق", status: "known" },
+                        { name: "سلمان", status: "known",
+                          children: [
+                            { name: "عدنان", status: "known" },
+                            { name: "أحمد", status: "known" },
+                            { name: "فاضل", status: "known" },
+                            { name: "علي", status: "known" }
+                          ]},
+                        { name: "صادق", status: "known",
+                          children: [
+                            { name: "جعفر", status: "known" },
+                            { name: "حسين", status: "known" }
+                          ]},
                         { name: "زهراء", status: "known" }
                       ]},
                     { name: "أم هاشم", status: "known", note: "بنت سلمان" }
@@ -430,25 +453,27 @@ const DATA = {
                           children: [
                             { name: "طوعة", status: "known" },
                             { name: "بدرية", status: "known" },
-                            { name: "نعيمة", status: "known" },
+                            { name: "نعيمة", status: "known", husband: "فاضل", note: "زوجة فاضل بن علي بن أحمد العيسى" },
                             { name: "حسن", status: "known" }
                           ]},
                         { name: "خليفة", status: "known", note: "زوجته صفية بنت عبدالمحسن بن عبدالله بن حسين",
                           children: [
-                            { name: "مريم", status: "known" },
+                            { name: "مريم", status: "known", husband: "رياض", note: "زوجة رياض ولد معصومة بنت عبدالله بن صالح" },
                             { name: "إسراء", status: "known" },
                             { name: "سجى", status: "known" },
                             { name: "فاطمة", status: "known" },
                             { name: "بتول", status: "known" },
                             { name: "عقيلة", status: "known" }
                           ]},
-                        { name: "معصومة", status: "known",
+                        { name: "معصومة", status: "known", husband: "محمد البطي", note: "زوجها محمد البطي",
                           children: [
                             { name: "غنية", status: "known" },
                             { name: "عقيل", status: "known" },
                             { name: "ياسر", status: "known" },
-                            { name: "أحلام", status: "known" },
-                            { name: "علي", status: "known" }
+                            { name: "أحلام", status: "known", husband: "الشيخ محمد الراشد", note: "زوجها الشيخ محمد الراشد، رحمه الله" },
+                            { name: "علي", status: "known" },
+                            { name: "رياض", status: "known", note: "زوجته مريم بنت خليفة بن عبدالله بن صالح" },
+                            { name: "منذر", status: "known" }
                           ]}
                       ]},
                     { name: "فاطمة", status: "known", husband: "علي", note: "زوجة علي بن سلمان" }
@@ -504,7 +529,7 @@ const DATA = {
                         { name: "معصومة", status: "known", husband: "طاهر", note: "زوجة طاهر بن علي العبدالمحسن" }
                       ]},
                     { name: "علي", status: "known" },
-                    { name: "نورا", status: "known", husband: "محمد", note: "زوجة محمد بن أحمد العيسى، أم حاكم العيسى" }
+                    { name: "نورا", status: "known", husband: "محمد", note: "زوجة محمد بن أحمد العيسى، أم جاسم العيسى" }
                   ]},
                 { name: "علي", status: "known", note: "المشهور بالعقيد",
                   children: [
@@ -656,17 +681,35 @@ const DATA = {
                   children: [
                     { name: "محمد", status: "presumed", note: "زوجته نورا بنت حسين بن عبدالمحسن",
                       children: [
-                        { name: "حاكم", status: "presumed" },
-                        { name: "حكيم", status: "presumed",
+                        { name: "جاسم", status: "presumed",
                           children: [
-                            { name: "حسين", status: "presumed" },
-                            { name: "صديقة", status: "presumed", note: "زوجة إبراهيم العطافي" },
-                            { name: "سلمى", status: "presumed", note: "الاسم غير واضح في الدفتر" }
+                            { name: "حسين", status: "known" },
+                            { name: "العبدة", status: "presumed" },
+                            { name: "مدينة", status: "known", note: "زوجة إبراهيم بن علي العطافي" },
+                            { name: "سالم", status: "known", note: "زوجته حميدة بنت علي بن صالح العطافي" }
                           ]}
                       ]},
                     { name: "عبدالله", status: "presumed",
                       children: [
-                        { name: "أحمد", status: "presumed" },
+                        { name: "أحمد", status: "presumed",
+                          children: [
+                            { name: "عيسى", status: "presumed",
+                              children: [
+                                { name: "عبدالله", status: "known" },
+                                { name: "عون", status: "known" }
+                              ]},
+                            { name: "طاهر", status: "presumed" },
+                            { name: "علي", status: "presumed",
+                              children: [
+                                { name: "عارف", status: "known" },
+                                { name: "فاضل", status: "known", note: "زوجته نعيمة بنت يوسف بن عبدالله بن صالح",
+                                  children: [
+                                    { name: "سلطان", status: "known" }
+                                  ]},
+                                { name: "عبدالله", status: "known" },
+                                { name: "أسامة", status: "known" }
+                              ]}
+                          ]},
                         { name: "عفيفة", status: "presumed" }
                       ]},
                     { name: "عفيفة", status: "presumed", note: "زوجة علي الجعفر" }
@@ -700,7 +743,7 @@ let open = [DATA.root];
 DEFAULT_PATH.forEach(i => { const last = open[open.length - 1]; if (hasKids(last) && last.children[i]) open.push(last.children[i]); });
 
 // ===== مين أنت: صلة كل اسم بالزائر =====
-const FEMALE = new Set(["زهراء","فضيلة","مريم","أم هاشم","زهرة","فضة","زينب","لطيفة","فاطمة","ليلى","عفاف","آسيا","حور","سارة","بتلاء","شعاع","طوعة","بدرية","نعيمة","معصومة","غنية","أحلام","رقية","حجية","آمنة","راضية","قبلة","سكينة","نورا","فائزة","حسنى","صفية","زكية","صديقة","أميرة","لولوة","سلمى","عفيفة","حوراء","نرجس","جنات","نوال","فوزية","إسراء","سجى","بتول","عقيلة","روان","رغد","أثير","سوسن","رباب","حنان","آيات","فجر"]);
+const FEMALE = new Set(["زهراء","فضيلة","مريم","أم هاشم","زهرة","فضة","زينب","لطيفة","فاطمة","ليلى","عفاف","آسيا","حور","سارة","بتلاء","شعاع","طوعة","بدرية","نعيمة","معصومة","غنية","أحلام","رقية","حجية","آمنة","راضية","قبلة","سكينة","نورا","فائزة","حسنى","صفية","زكية","صديقة","أميرة","لولوة","سلمى","عفيفة","حوراء","نرجس","جنات","نوال","فوزية","إسراء","سجى","بتول","عقيلة","روان","رغد","أثير","سوسن","رباب","حنان","آيات","فجر","العبدة","مدينة"]);
 const isF = n => FEMALE.has(n.name);
 // عيال الأم يطلعون تحتها وتحت أبوهم: نسخة تحت الأم مربوطة بالأصل اللي تحت الأب
 (function mothers(){
