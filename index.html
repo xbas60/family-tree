@@ -397,7 +397,11 @@ const DATA = {
                                 { name: "زهرة", status: "known" },
                                 { name: "علي", status: "known" }
                               ]},
-                            { name: "مريم", status: "known", husband: "يوسف", note: "زوجها يوسف بن حسين يعقوب السعيد، ولد راضية بنت عبدالمحسن" },
+                            { name: "مريم", status: "known",
+                              children: [
+                                { name: "فاطمة", status: "known", note: "متوفاة، رحمها الله" },
+                                { name: "فاطمة", status: "known", note: "متوفاة، رحمها الله" }
+                              ]},
                             { name: "سارة", status: "known" }
                           ]},
                         { name: "حسين", status: "known", note: "زوجته نوال علي محسن المحمد علي",
@@ -419,7 +423,7 @@ const DATA = {
                             { name: "محمد", status: "known" },
                             { name: "علي", status: "known" }
                           ]},
-                        { name: "إبراهيم", status: "known", note: "زوجته فضة بنت حسين يعقوب السعيد، أمها راضية بنت عبدالمحسن",
+                        { name: "إبراهيم", status: "known",
                           children: [
                             { name: "مهدي", status: "known" },
                             { name: "جواد", status: "known" }
@@ -534,15 +538,7 @@ const DATA = {
                         { name: "فضة", status: "known", husband: "جواد", note: "زوجة جواد بن صالح" },
                         { name: "حجية", status: "known", note: "زوجة كاظم البراهيم" },
                         { name: "آمنة", status: "known", husband: "محمد", note: "زوجة محمد الحمد" },
-                        { name: "راضية", status: "known", husband: "عبدالكريم", note: "زوجة عبدالكريم بن عبدالنبي، ثم حسين يعقوب السعيد",
-                          children: [
-                            { name: "يوسف", status: "known", father: "حسين يعقوب السعيد", note: "أبوه حسين يعقوب السعيد · زوجته مريم بنت موسى بن جواد",
-                              children: [
-                                { name: "فاطمة", status: "known", note: "متوفاة، رحمها الله" },
-                                { name: "فاطمة", status: "known", note: "متوفاة، رحمها الله" }
-                              ]},
-                            { name: "فضة", status: "known", father: "حسين يعقوب السعيد", husband: "إبراهيم", note: "أبوها حسين يعقوب السعيد · زوجة إبراهيم بن جواد بن صالح" }
-                          ]},
+                        { name: "راضية", status: "known", husband: "عبدالكريم", note: "زوجة عبدالكريم بن عبدالنبي" },
                         { name: "قبلة", status: "known", note: "زوجة علي العلي" },
                         { name: "سكينة", status: "known", note: "زوجة حسين بن علي العبدالمحسن" },
                         { name: "نعيمة", status: "known", husband: "صالح", note: "زوجة صالح بن علي العبدالمحسن" },
@@ -941,7 +937,6 @@ function lineage(n, k){
   const up = fatherChain(n).slice(0, k);
   let out = up[0].name;
   for (let i = 1; i < up.length; i++) out += (isF(up[i - 1]) ? " بنت " : " بن ") + up[i].name;
-  if (up.length === 1 && underMother(n)) out += isF(n) ? " · أبوها غير مسجل في الشجرة" : " · أبوه غير مسجل في الشجرة";
   return out;
 }
 
